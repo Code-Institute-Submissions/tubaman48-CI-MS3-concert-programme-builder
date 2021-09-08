@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programme Manager</title>
+</head>
+<body>
+    {% for prog in progs %}
+        {{ prog.band_name }}<br>
+        {{ prog.concert_venue }}<br>
+        {{ prog.concert_date }}<br>
+        {{ prog.concert_times }}<br>
+        {{ prog.prog_item }}<br>
+        {{ prog.created_by }}<br>
+    {% endfor %}
+</body>
+</html>
