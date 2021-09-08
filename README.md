@@ -1,108 +1,441 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Concert Programme Builder Website
 
-Welcome USER_NAME,
+![Image](/static/images/logos/ConcertProgrammeBuilder_icon_450x450.svg)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+[View the live project here.](https://ci-ms3-concert-programme-build.herokuapp.com)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
 
-## Gitpod Reminders
+### The aim of this website is to **provide an intuitive tool to enable the easier construction of concert programmes by musical directors assisted by music librarian**.
+### It is designed to be responsive and accessible on a range of devices, making it easy to navigate for four distinct groups of users :
+-   User Admin for maintaining user access
+-   Music Librarian for maintaining music catalogue items and concert programmes
+-   Musical Directors for the creation and maintenance of concert programmes
+-   Members of the public and band members who want to view concert programmes (past and present)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+![Image]   (/static/images/CI-MS3-Concert-Programme-Builder_mock_up.png to add)
 
 ---
 
-Happy coding!
+## Table of Contents
+
+> + [Overview](#overview)
+> + [Description](#description)
+> + [User Experience](#user-experience)
+> + [Features](#features)
+> + [Database Schema](#database-schema)
+> + [Technologies Used](#technologies-used)
+> + [References for learning](#references-for-learning)
+> + [Testing](#testing)
+> + [Project barriers and the solutions](#project-barriers-and-the-solutions)
+> + [Code validity](#code-validity)
+> + [Version Control](#version-control)
+> + [Deployment](#deployment)
+> + [Credits](#credits)
+> + [Acknowledgments](#acknowledgements)
+> + [Support](#support)
+
+**Please note: To open any links in this document in a new browser tab, please press `CTRL + Click`.**
+
+---
+
+# Overview
+
+> There is currently no purpose built tool available to bands which enable music programmes to be easily assembled from a library of music.
+
+---
+
+# Description
+
+> The Concert Programme Builder project is dedicated to enabling easier construction of music programmes for a band by the musical director(s) based on music available from the music librarian.
+
+---
+
+# User Experience
+
+This website project focusses on usage by band librarians and musical directors with the transparency to show the concert programmes to a wider demographic of individuals covering other band members and the public at large, hence an overall simple, yet effective website is aimed at. 
+The priority focus is on ease of use by the different types of user.
+
+- ## 0. User Stories
+
+The following user stories remain in the scope of the final project delivered :
+> - _"As a music director we wish to construct concert programmes of music based on pieces that are available in the music library, pieces that we need to buy or pieces being arranged"_
+> - _"As a music director we wish to be able to search for, create, display, update and delete music programmes for upcoming concerts"_
+> - _"As a music director we wish to be able to search for historic music programmes to help formulate new programmes"_
+> - _"As a music librarian I wish to be able to maintain a current list of music available with search, create, display, update and delete capabilities"_
+> - _"As a music librarian I wish to be able to maintain a current list of music programmes with search, create, display, update and delete capabilities"_
+> - _"As a User Admin I wish to be able to search for, create, display, update and delete users of the site"_
+> - _"As a member of the band I wish to have access to search for and display any music programmes (historic and current) via registration process"_
+> - _"As a member of the general public I wish to have access to search for and display any music programmes (historic and current) without having to register to the site"_
+> - _"As a user of this resource (in any capacity) I would like a responsive design that caters for mobile and non-mobile devices"_
+> - _"As a user of this resource (in any capacity) I would like to be able to print out individual concert programmes"_
+
+The following user stories were descoped early on in the project due to time constraints :
+> - _"As a music director we would like to be able reference pieces in other band libraries that we could borrow"_
+> - _"As a music librarian I wish to be able to include in the current list of music available pieces that belong to another band's library which we have permission to borrow"_
+
+- ## 1. Strategy
+
+> The aim of this project is to facilitate more efficient construction of concert programmes, hence keeping the UX simple and user-friendly.
+>
+> ### Project Goals:
+>
+> - Providing a simple web-based tool to construct music programmes for a band.
+> - Maintain the integrity of this resource by only permitting maintenance of concert programmes by the librarian and musical director(s), restricting the options available by the type of user.
+>
+> ### Customer Goals:
+>
+> - Designed site with Mobile-first approach
+> - Easy to construct concert programmes (available only to the librarian and musical director(s) ).
+> - Imagery used for intuitive explanation of which template page the user is on.
+> - Enable a two-way engagement with users of this site.
+> - Fixed navigation bar providing user easy navigation reference.
+
+- ## 2. Scope
+
+> I've decided on an MVP (Minimal Viable Product) approach, which:
+>
+> - Provides a clean UX for users.
+> - Fits in with my current skill-set.
+> - Hides content and options according to the user type.
+
+- ## 3. Structure
+
+> The main focus of the structure is to allow Users to quickly focus in on concert programmes of interest to them. 
+> Short, focused paragraphs of content information to provide enough information, yet not overwhelm.
+> A selection of quality images to project the template page the user is on.
+
+- ## 4. Skeleton
+
+> - [Wireframes] (/static/docs/RL-CI-MS3-Wireframes.pdf): A multi page website using Flask to route to the appropriate template page, dependent on the options selected.
+>    The Home page provides a textual introduction to the site.
+>    The Music Items page (only visible to the Librarian, Musical Director(s) and registered Band Members) presents a summary list of music items available with a search facility based on the Title. Additional edit capabilities are provided only to the Librarian, Musical Director(s) for integrity purposes.
+>    The Concert Programmes page (visible to all users) presents a summary list of concert programmes available with a search facility based on the venue and/or date. Additional edit capabilities are provided only to the Librarian, Musical Director(s) for integrity purposes. 
+>    The Concert Programme Details page (available via the Concert Programmes page) provides the date, times, venue and content of the programme with an option to print.
+>    The Login / Register page.
+>    The User Admin page (only accessible to the User Admin) for the creation, display, search, upadte and delete of user profiles.
+>
+> - Fixed navigation bar - Menu headings pointing to each of the available sections (dependent on user type).
+>
+> - Fixed Footer with Copyright info
+
+- ## 5. Surface
+
+> I've decided on the same colour scheme for the body of each separate page using appropriate icons alongside the title of the page to keep a sense of where you are on the site.
+>
+> ### Colours
+>
+> Soft (neutral) pastel yellow (# to be determined) chosen as the background colour for the generic header section (including navigation bar).
+> For body text, I've used a combination of a dark grey (#242424) and off-white (#fafafa), maintaining strong, balanced contrasts.
+> 
+> ### Typography
+>
+> - "Lato" font (with fall-back font of Verdana) for main headings. This font was specifically chosen for the header page title and subtitle.
+> - "Oswald" font (with fall-back font of Sans-Serif) for body content.
+>
+> ### Images
+>
+> The image selection has been carefully chosen to depict the target audiences for this directory to make this a more welcoming resource.
+
+---
+
+# Features
+
+- ## Current Features
+
+> ### **Navigation menu displayed across all pages**
+>
+> The navigation menu will help the user move easily across all pages. 
+> For the collections pages, there is a dropdown menu in which all of those pages are held. 
+> This stops the navigation from becoming too cluttered. 
+>
+> The navigation buttons update depending on whether a user is logged in, and whether that user is the admin:
+
+| Nav Link              |Not logged in  |Logged in as user|Logged in as Librarian |Logged in as MD |Logged in as admin
+|:-------------         |:------------- |:------------- |:------------- |:------------- |:------------- |
+|Logo(back to home)     |&#9989;        |&#9989;        |&#9989;        |&#9989;        |&#9989;
+|Music Items            |&#10060;       |&#10060;       |&#9989;        |&#9989;        |&#9989;
+|Concert Programmes     |&#9989;        |&#9989;        |&#9989;        |&#9989;        |&#9989;
+|Collections            |&#9989;        |&#9989;        |&#9989;        |&#9989;        |&#9989;
+|Manage Collections     |&#10060;       |&#10060;       |&#9989;        |&#9989;        |&#9989;
+|Account                |&#10060;       |&#9989;        |&#9989;        |&#9989;        |&#9989;
+|Log Out                |&#10060;       |&#9989;        |&#9989;        |&#9989;        |&#9989;
+|Register               |&#9989;        |&#10060;       |&#10060;       |&#10060;       |&#10060;
+|Log In                 |&#9989;        |&#10060;       |&#10060;       |&#10060;       |&#10060;
+
+> - Designed with HTML5, CSS3, Javascript, Python and Materialise within a Flask framework deployed onto Heroku.
+> - Site made up of multiple template pages routed to via app.py made up of a fixed navigation bar followed by the appropriate content as outlined above under the UX Skeleton section
+> - Fixed navigation allows the user to easily navigate, regardless of which section they are currently positioned in.
+> - Fixed, stacked images for mobile views.
+
+- ## Future Features Left to Implement when time allows
+
+> - Expand the list of available pieces to incorporate pieces that belong to another band's library which we have permission to borrow, this would required amending the database schema include an extra music item status category of 'borrowed' which would hold extra fields denoting the band it has been borrowed from and the agreed time period that it has been borrowed for.
+
+---
+
+# Database
+
+> MongoDB's non-relational database structure was ideal for this site as there were very few relationships between the collections on the site.
+> Below is the schema for my database:
+>
+> ![database schema] (static/images/README/db-schema.PNG)
+
+## genres collection
+
+| Key                   |Value type     |Desc           |
+|:-------------         |:------------- |:------------- |
+|_id                    |ObjectId       |
+|genre_name             |string         |used in *music_items* to describe type of music
+
+## bands collection
+
+| Key                   |Value type     |Desc           |
+|:-------------         |:------------- |:------------- |
+|_id                    |ObjectId       |
+|band_name              |string         |used in *programmes* to detail the band playing
+
+## venues collection
+
+| Key                   |Value type     |Desc           |
+|:-------------         |:------------- |:------------- |
+|_id                    |ObjectId       |
+|venue_name             |string         |used in *programmes* to detail the location of concert
+
+## music_items collection
+
+| Key                   |Value type     |Desc           |
+|:-------------         |:------------- |:------------- |
+|_id                    |ObjectId       |
+|genre_name             |string         |each genre chosen by user from *genres*
+|title                  |string         |name of the piece
+|composer               |string         |composer of the piece
+|arranger               |string         |arranger of the piece
+|status                 |string         |denotes source of music
+|created_by             |ObjectId       |object id taken from *users*
+
+## programmes collection
+
+| Key                   |Value type     |Desc           |
+|:-------------         |:------------- |:------------- |
+|_id                    |ObjectId       |
+|band_name              |array          |each band chosen by user from *bands*
+|concert_venue          |string         |location of concert from *venues*
+|concert_date           |date           |date of concert
+|concert_times          |time           |times of concert
+|programme_item         |array          |collection of selected pieces from *music_items*
+|created_by             |ObjectId       |object id taken from *users*
+
+## users collection
+
+| User                  |Value type     |Desc           |
+|:-------------         |:------------- |:------------- |
+|_id                    |ObjectId       |used in *music_items* and *programmes*
+|username               |string         |
+|password               |string         |hashed password for user security
+|role                   |string         |used to determine user rights on some of the pages from *roles*
+
+## roles collection
+
+| User                  |Value type     |Desc           |
+|:-------------         |:------------- |:------------- |
+|_id                    |ObjectId       |used in *music_items* and *programmes*
+|username               |string         |
+
+---
+
+# Technologies Used
+
+## 1. Languages Used
+
+> - [HTML5](https://en.wikipedia.org/wiki/HTML5).
+>
+> - [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets).
+>
+> - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+>
+> - [Python3](https://www.python.org/)
+
+## 2. Frameworks and Libraries Used
+
+> - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+> - [Flask-PyMongo](https://pypi.org/project/Flask-PyMongo/)
+> - [Pip3](https://pip.pypa.io/en/stable/)
+> - [dnspython](https://www.dnspython.org/)
+> - [jQuery](https://jquery.com/)
+> - [Flask Paginate](https://pythonhosted.org/Flask-paginate/)  ???
+> - [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
+> - [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
+> - [Materialize](https://materializecss.com/)
+> - [Bootstrap](https://getbootstrap.com/) - by linking via [BootstrapCDN](https://www.bootstrapcdn.com/) to HTML Doc.
+>  (Bootstrap to be replaced with Materialise)
+>
+> - [FontAwesome](https://fontawesome.com/) - used on all pages throughout the website to add icons for aesthetic and UX purposes.
+>
+> - [Google Fonts](https://fonts.google.com/) - used to import the 'Lato' and 'Oswald' fonts into the style.css file which are used on all pages throughout the project.
+
+## 3. Workspace, version control and Repository storage
+
+> - [GitPod](https://github.com/mkuti/corklagos-venture/blob/master/gitpod.io) - Main workspace IDE (Integrated Development Environment)
+>
+> - [Git](https://git-scm.com/) - Distributed Version Control tool to store versions of files and track changes.
+>
+> - [GitHub](https://github.com/) - A cloud-based hosting service to manage my **Git** repositories.
+
+## 4. Other
+
+> - [Heroku](https://www.heroku.com/) used to deploy live site
+> - [MongoDB](https://www.mongodb.com/) used to host database information.
+> - [RandomKeygen](https://randomkeygen.com/) used to create a strong password for required  `<SECRET_KEY>`.
+> - [Lighthouse](https://developers.google.com/web/tools/lighthouse) for performance review.
+> - [Autoprefixer](https://autoprefixer.github.io/) Parses CSS and adds vendor prefixes.
+> - [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly) Mobile-friendly check on site.
+> - [Website Page Test](https://www.webpagetest.org/) Runs a website speed test from multiple locations around the globe using real browsers (IE and Chrome) and at real consumer connection speeds.
+> - [Responsinator](http://www.responsinator.com/) Checks rendering across a variety of device types in landscape and portrait modes.  
+> - [Online-Spellcheck](https://www.online-spellcheck.com/) Online spelling and grammar checks.
+
+## 5. IDE Extensions used in GitPod
+
+> - Auto Close Tag
+> - Auto Nametag
+> - Bracket Pair Colorizer
+> - Code Spellchecker
+> - Prettier - Code Formatter
+> - Indent-Rainbow
+
+---
+
+# Resources
+
+> - [Code Institute Course Content](https://courses.codeinstitute.net/) - Main source of fundamental knowledge.
+> - Code Institute **SLACK Community** - Main source of assistance, especially the **JimLynx** webinar on the "Introduction to Git Workflow" which made the process of adding, committing and pushing in gitpod so much smoother.
+> - [Stack Overflow](https://stackoverflow.com/) - General resource.
+> - [Youtube](https://www.youtube.com/) - General resource.
+> - [CSS-Tricks](https://css-tricks.com/) - General resource.
+> - [W3.CSS](https://www.w3schools.com/w3css/4/w3.css) - General resource.
+> - [CommonMark](https://commonmark.org/help/) - For Markdown language reference.
+> - [Coolors](https://coolors.co/) - Find matching color palette for site.
+> - [TinyPNG](https://tinypng.com/) - Efficient compression of images for site.
+> - [Am I Responsive](http://ami.responsivedesign.is/) - Responsive website mockup image generator.
+> - [Balsamiq](https://balsamiq.com/wireframes/) - Wireframing design tool.
+> - [Bootstrap Grid Explanation by Anna Greaves](https://ajgreaves.github.io/bootstrap-grid-demo/) - This was an invaluable resource for me to wrap my head around Grid layouts.
+---
+
+# Testing
+
+Due to the size of the testing section, I have created a separate document for it. You can find it [here](https://github.com/tubaman48/CI-MS3-concert-programme-builder/main/TESTING.md).
+
+---
+
+# Project barriers and solutions
+
+> - to be done
+
+---
+
+# Code validity
+
+> - HTML   - [W3C](https://validator.w3.org/) - Markup Validation
+>
+> - CSS    - [W3C](https://jigsaw.w3.org/css-validator/) - CSS Validation
+>
+> - JS     - [JSHint](https://jshint.com/) - Javascript Validation
+>
+> - PYTHON - [PyLint](https://pylint.org/) - Python Validation
+>
+> - TAGS   - [Closing Tag Checker for HTML5](https://www.aliciaramirez.com/closing-tags-checker/) - Validates all tags are opening and closing correctly.
+
+---
+
+# Version Control
+
+> - Used Git for version control.
+> - Branches were created to work on alternative fixes to issues encountered.
+> - The branches were then merged with the master branch after any conflicts were addressed.
+
+---
+# Deployment
+
+### **GitHub**
+
+> The Concert Programme Builder has been deployed on GitHub Pages with the following process:
+>
+> - All code was written on Gitpod, an online IDE.
+> - The code was then pushed to GitHub where it is stored in my [Repository](https://github.com/tubaman48/CI-MS3-concert-programme-builder).
+> - Under the [settings/pages](https://github.com/tubaman48/CI-MS3-concert-programme-builder/settings/pages) section of the GitHub repository, under 'Source' drop-down, the 'Main branch' was selected.
+> - Once saved, this publishes the project to GitHub Pages and displays the site url.
+> - There is no difference between the deployed version and the development version.
+> - The code can be run locally through clone or download.
+> - You can do this by opening the repository, clicking on the green 'Code' button and selecting either 'clone or download'.
+> - The Clone option provides a url ( https://github.com/tubaman48/CI-MS3-concert-programme-builder ), which you can use on your desktop IDE.
+> - The Download ZIP option provides a link to download a ZIP file which can be unzipped on your local machine.
+> - The project was deployed to Heroku for the live site and the pushes to GitHub automatically pushed to Heroku to update the live site. 
+> - Please note that this project will only run locally if an env.py file is set up containing the IP, PORT, SECRET_KEY, MONGO-URI and MONGO_DBNAME. 
+>   For security reasons these details will not be shared on this documentation. The env.py file should be added to your gitignore file.
+
+### **Heroku**
+
+> - **Deployment to Heroku**
+>
+> - **Create the application:**
+>  
+>      * Login in to heroku.com
+>      * Click on New, and Create new app
+>      * Enter your app name
+>      * Select the region that is closest to you
+>  
+> - **Connect to you GitHub repository**
+>  
+>      * Click Deploy and select GitHub - Connect to GitHub
+>      * Enter your repository name and search
+>      * Click Connect on the correct repository
+>  
+> - **Set Your Environment Variables**
+>  
+>  Go to settings, and within Config Vars enter the following
+>  
+>      * IP: 0.0.0.0
+>      * PORT: 5000
+>      * SECRET_KEY: (This is a secret password that must be very secure - recommend selecting a "Fort Knox Password" at https://randomkeygen.com/)
+>      * MONGO_DBNAME: (enter the database name that you are connecting to - in this case *programme_builder* )
+>      * MONGO_URI: (enter your mongo uri. This is found by going to clusters> connect> connect to your application and entering your passwords and dbname within the link)
+>  
+> - **Enable Automatic Deploys**
+>  
+>      * Go to the deploy tab
+>      * Within the automatic deploys section, choose the branch that you want to deploy from and select Enable Automatic Deploys. 
+
+# Credits
+
+> ## Media
+>
+> - The main "hero-image" used in this project is _owned and provided by myself_
+> - The icons utilised in the **Technology Used** section of the README for this project were obtained from [FontAwesome](https://fontawesome.com/)
+> - The "Concert Programme Builder" site icon was created via my tubaman48 account at [vectr.com](https://vectr.com/).
+>
+> ## Content
+>
+> - All text content is _self-written_
+>
+> ## Code Snippets
+>
+> - [Code Institute](https://codeinstitute.net/) - Inspiration for user profile management and 'CRUD' processing from 'Task Manager' Mini-Project in Backend Development Module.
+> - [W3.org](https://www.w3.org/2005/10/howto-favicon) - How to add a Favicon to site.
+
+---
+
+# Acknowledgements
+>
+> I would like to thank:
+>
+> - A combination of *Amy O'Shea* and *Rachel Sherlock* for their example MS3 README.md files :
+>      https://github.com/AmyOShea/MS3-Cocktail-Hour/blob/master/README.md
+>      https://github.com/Rachel2308/MS3-belles-task-manager/blob/master/README.md
+>   These examples significantly helped me with formatting of the database schema / nav link accessibility table within features / deployment sections within this README.
+> - **CI staff** and **Slack Community** for always being on-hand with questions posted and assistance requests.
+> - Everyone that takes part in the Slack calls, specifically from the **#In-It-Together** and **#London Community** channels.
+
+# Support
+
+> For any issue resolution or assistance, please email Richard Lovett on rjlovett48@gmail.com
+
+---
