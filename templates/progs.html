@@ -1,14 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2>I'm extending the base template!</h2>
-    {% for prog in progs %}
-        {{ prog.band_name }}<br>
-        {{ prog.concert_venue }}<br>
-        {{ prog.concert_date }}<br>
-        {{ prog.concert_times }}<br>
-        {{ prog.prog_item }}<br>
-        {{ prog.created_by }}<br>
-    {% endfor %}
+    <h3 class="amber-text text-darken-4 center-align">All Concert Programmes</h3>
+
+    <ul class="collapsible">
+        {% for prog in progs %}
+        <li>
+            <div class="collapsible-header white-text amber darken-4 text-shadow">
+                <p>
+                    <i class="fas fa-caret-down"></i>
+                    <strong>{{ prog.concert_venue }}</strong> : 
+                    {{ prog.concert_date.strftime("%A %d %B %Y") }}
+                </p>
+            </div>
+            <div class="collapsible-body">
+                <p><strong>Playing between : {{ prog.concert_times }}</strong></p>
+                <p><strong>Band performing : {{ prog.band_name }}</strong></p>
+                {% for item in prog.prog_item %}
+                    <p>{{ item }}</p>
+                {% endfor %}
+                <p><em>created by: {{ prog.created_by }}</em></p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
