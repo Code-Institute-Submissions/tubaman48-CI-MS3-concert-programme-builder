@@ -11,6 +11,13 @@
                     <i class="fas fa-caret-down"></i>
                     <strong>{{ prog.concert_venue }}</strong> : 
                     {{ prog.concert_date.strftime("%A %d %B %Y") }}
+                    {% if prog.is_finalised %}
+                        <i class="fas fa-check-double green-text text-lighten-2 tooltipped"
+                            data-position="right" data-tooltip="Final Version"></i>
+                    {% else %}
+                        <i class="fas fa-check amber-text text-lighten-2 tooltipped"
+                            data-position="right" data-tooltip="Draft Version"></i>
+                    {% endif %}
                 </p>
             </div>
             <div class="collapsible-body">
@@ -19,7 +26,7 @@
                 {% for item in prog.prog_item %}
                     <p>{{ item }}</p>
                 {% endfor %}
-                <p><em>created by: {{ prog.created_by }}</em></p>
+                <p><em>Created by: {{ prog.created_by }}</em></p>
             </div>
         </li>
         {% endfor %}
