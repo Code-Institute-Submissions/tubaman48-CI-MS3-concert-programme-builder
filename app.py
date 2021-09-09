@@ -123,6 +123,17 @@ def prog_add():
         "prog_add.html", venues=venues, bands=bands, music_items=music_items)
 
 
+@app.route("/prog_edit/<prog_id>", methods=["GET", "POST"])
+def prog_edit(prog_id):
+    prog = mongo.db.progs.find_one({"_id": ObjectId(prog_id)})
+    venues = mongo.db.venues.find().sort("venue_name", 1)
+    bands = mongo.db.bands.find().sort("band_name", 1)
+    music_items = mongo.db.music_items.find().sort("genre_name"+"title", 1)
+    return render_template(
+        "prog_edit.html",
+        prog=prog, venues=venues, bands=bands, music_items=music_items)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

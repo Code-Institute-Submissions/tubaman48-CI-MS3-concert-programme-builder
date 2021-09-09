@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="amber-text text-darken-4 center-align">Add Concert Programme</h3>
+    <h3 class="amber-text text-darken-4 center-align">Edit Concert Programme</h3>
 
     <div class="row card-panel grey lighten-5">
-        <form class="col s12" method="POST" action="{{ url_for('prog_add') }}">
+        <form class="col s12" method="POST" action="{{ url_for('prog_edit', prog_id=prog._id) }}">
             <!-- venue selection -->
             <div class="row">
 				<div class="input-field col s12">
@@ -80,7 +80,7 @@
             <div class="row">
                 <div class="col s12 center-align">
                     <button type="submit" class="btn-large amber darken-1 text-shadow">
-                        Add Programme <i class="fas fa-plus-square right"></i>
+                        Edit Programme <i class="fas fa-edit right"></i>
                     </button>
                 </div>
             </div>
