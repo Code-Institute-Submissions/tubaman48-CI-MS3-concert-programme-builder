@@ -10,9 +10,13 @@
 				<div class="input-field col s12">
                     <i class="fas fa-theater-masks prefix amber-text text-darken-4"></i>
 					<select id="concert_venue" name="concert_venue" class="validate" required>
-                        <option value="" disabled selected>Choose Venue</option>
+                        <option value="" disabled>Choose Venue</option>
                         {% for venue in venues %}
-                            <option value="{{ venue.venue_name }}">{{ venue.venue_name }}</option>
+                            {% if venue.venue_name == prog.concert_venue %}
+                                <option value="{{ venue.venue_name }}" selected>{{ venue.venue_name }}</option>
+                            {% else %}
+                                <option value="{{ venue.venue_name }}">{{ venue.venue_name }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
 					<label for="concert_venue">Venue</label>
@@ -22,7 +26,8 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix amber-text text-darken-4"></i>
-                    <input id="concert_date" name="concert_date" type="text" class="datepicker validate" required>
+                    <input id="concert_date" name="concert_date" type="text" 
+                        value="{{ prog.concert_date }}" class="datepicker validate" required>
                     <label for="concert_date">Concert Date</label>
                 </div>
             </div>
@@ -31,7 +36,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-clock prefix amber-text text-darken-4"></i>
                     <input id="concert_times" name="concert_times" minlength="3" maxlength="20"
-                        type="text" class="validate" required>
+                        type="text" value="{{ prog.concert_times }}" class="validate" required>
                     <label for="concert_times">Concert Times</label>
                 </div>
             </div>
@@ -40,9 +45,13 @@
 				<div class="input-field col s12">
                     <i class="fas fa-users prefix amber-text text-darken-4"></i>
 					<select id="band_name" name="band_name" class="validate" required>
-                        <option value="" disabled selected>Choose Band</option>
+                        <option value="" disabled>Choose Band</option>
                         {% for band in bands %}
-                            <option value="{{ band.band_name }}">{{ band.band_name }}</option>
+                            {% if band.band_name == prog.band_name %}
+                                <option value="{{ band.band_name }}" selected>{{ band.band_name }}</option>
+                            {% else %}
+                                <option value="{{ band.band_name }}">{{ band.band_name }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
 					<label for="band.band_name">Band Playing</label>
@@ -53,11 +62,18 @@
 				<div class="input-field col s12">
                     <i class="fas fa-music prefix amber-text text-darken-4"></i>
 					<select id="title" name="title" class="validate" required>
-                        <option value="" disabled selected>Choose Music</option>
+                        <option value="" disabled>Choose Music</option>
                         {% for music_item in music_items %}
-                            <option value="{{ music_item.genre_name }} {{ music_item.title }}">
-                                {{ music_item.genre_name }}:{{ music_item.title }}
-                            </option>
+                            <!-- LOGIC ON FOLLOWING LINE NEEDS FIXING !!! -->
+                            {% if music_item.genre_name == prog.title %}
+                                <option value="{{ music_item.genre_name }} {{ music_item.title }}" selected>
+                                    {{ music_item.genre_name }}:{{ music_item.title }}
+                                </option>
+                            {% else %}
+                                <option value="{{ music_item.genre_name }} {{ music_item.title }}">
+                                    {{ music_item.genre_name }}:{{ music_item.title }}
+                                </option>
+                            {% endif %}
                         {% endfor %}
                     </select>
 					<label for="music_item.title">Music Items</label>
@@ -69,7 +85,11 @@
 					<div class="switch">
                         <i class="fab fa-firstdraft prefix amber-text text-darken-4"></i>
 						<label for="is_finalised">
-                            <input type="checkbox" id="is_finalised" name="is_finalised">
+                            {% if prog.is_finalised %}
+                                <input type="checkbox" id="is_finalised" name="is_finalised" checked>
+                            {% else %}
+                                <input type="checkbox" id="is_finalised" name="is_finalised">
+                            {% endif %}
                             <span class="lever"></span>
                             Is Finalised
                         </label>
@@ -79,6 +99,10 @@
             <!-- submit button -->
             <div class="row">
                 <div class="col s12 center-align">
+                    <!-- cancel button -->
+                    <a href="{{ url_for('get_progs') }}" class="btn-large red text-shadow">
+                        Cancel <i class="fas fa-times-circle right"></i>
+                    </a>
                     <button type="submit" class="btn-large amber darken-1 text-shadow">
                         Edit Programme <i class="fas fa-edit right"></i>
                     </button>
