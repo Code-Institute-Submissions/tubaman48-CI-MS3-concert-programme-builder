@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="amber-text text-darken-4 center-align">Add Concert Programme</h3>
+
+    <div class="row card-panel grey lighten-5">
+        <form class="col s12" method="POST" action="{{ url_for('prog_add') }}">
+            <!-- venue selection -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-theater-masks prefix amber-text text-darken-4"></i>
+					<select id="venue_name" name="venue_name" class="validate" required>
+                        <option value="" disabled selected>Choose Venue</option>
+                        {% for venue in venues %}
+                            <option value="{{ venue.venue_name }}">{{ venue.venue_name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="venue_name">Venue</label>
+				</div>
+			</div>
+            <!-- concert date picker -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-calendar-alt prefix amber-text text-darken-4"></i>
+                    <input id="concert_date" name="concert_date" type="text" class="datepicker validate" required>
+                    <label for="concert_date">Concert Date</label>
+                </div>
+            </div>
+            <!-- concert timings -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-clock prefix amber-text text-darken-4"></i>
+                    <input id="concert_times" name="concert_times" minlength="3" maxlength="20"
+                        type="text" class="validate" required>
+                    <label for="concert_times">Concert Times</label>
+                </div>
+            </div>
+            <!-- band selection -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-users prefix amber-text text-darken-4"></i>
+					<select id="band_name" name="band_name" class="validate" required>
+                        <option value="" disabled selected>Choose Band</option>
+                        {% for band in bands %}
+                            <option value="{{ band.band_name }}">{{ band.band_name }}</option>
+                        {% endfor %}
+                    </select>
+					<label for="band.band_name">Band Playing</label>
+				</div>
+			</div>
+            <!-- music selection -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
+					<select id="title" name="title" class="validate" required>
+                        <option value="" disabled selected>Choose Music</option>
+                        {% for music_item in music_items %}
+                            <option value="{{ music_item.genre_name }} {{ music_item.title }}">
+                                {{ music_item.genre_name }}:{{ music_item.title }}
+                            </option>
+                        {% endfor %}
+                    </select>
+					<label for="music_item.title">Music Items</label>
+				</div>
+			</div>
+            <!-- is finalised toggle -->
+			<div class="row">
+				<div class="input-field col s12">
+					<div class="switch">
+                        <i class="fab fa-firstdraft prefix amber-text text-darken-4"></i>
+						<label for="is_finalised">
+                            <input type="checkbox" id="is_finalised" name="is_finalised">
+                            <span class="lever"></span>
+                            Is Finalised
+                        </label>
+					</div>
+				</div>
+			</div>
+            <!-- submit button -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn-large amber darken-1 text-shadow">
+                        Add Programme <i class="fas fa-plus-square right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
