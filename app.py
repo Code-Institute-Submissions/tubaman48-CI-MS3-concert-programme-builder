@@ -148,6 +148,13 @@ def prog_edit(prog_id):
         prog=prog, venues=venues, bands=bands, music_items=music_items)
 
 
+@app.route("/prog_delete/<prog_id>")
+def prog_delete(prog_id):
+    mongo.db.progs.remove({"_id": ObjectId(prog_id)})
+    flash("Concert Programme Successfully Deleted")
+    return redirect(url_for("get_progs"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

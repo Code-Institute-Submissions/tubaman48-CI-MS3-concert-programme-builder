@@ -12,7 +12,8 @@
                 </div>
                 <div class="col s2">
                     {% if session.user|lower == prog.created_by|lower %}
-                        <a href="" class="btn-small green accent-4">Done</a>
+                        <a href="{{ url_for('prog_delete', prog_id=prog._id) }}"
+                            class="btn-small red accent-4">Remove</a>
                         <a href="{{ url_for('prog_edit', prog_id=prog._id) }}" 
                             class="btn-small light-blue lighten-1">Edit</a>
                     {% endif %}
