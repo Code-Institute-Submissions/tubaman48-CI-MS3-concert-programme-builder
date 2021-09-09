@@ -19,7 +19,7 @@
                         <span class="card-title">{{ genre.genre_name }}</span>
                     </div>
                     <div class="card-action">
-                        <a href="#" class="btn light-blue accent-4">Edit</a>
+                        <a href="{{ url_for('genre_edit', genre_id=genre._id) }}" class="btn light-blue accent-4">Edit</a>
                         <a href="#" class="btn red lighten-1">Remove</a>
                     </div>
                 </div>
