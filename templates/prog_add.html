@@ -9,13 +9,13 @@
             <div class="row">
 				<div class="input-field col s12">
                     <i class="fas fa-theater-masks prefix amber-text text-darken-4"></i>
-					<select id="venue_name" name="venue_name" class="validate" required>
+					<select id="concert_venue" name="concert_venue" class="validate" required>
                         <option value="" disabled selected>Choose Venue</option>
                         {% for venue in venues %}
                             <option value="{{ venue.venue_name }}">{{ venue.venue_name }}</option>
                         {% endfor %}
                     </select>
-					<label for="venue_name">Venue</label>
+					<label for="concert_venue">Venue</label>
 				</div>
 			</div>
             <!-- concert date picker -->

@@ -101,6 +101,21 @@ def logout():
 
 @app.route("/prog_add", methods=["GET", "POST"])
 def prog_add():
+    if request.method == "POST":
+        is_finalised = True if request.form.get("is_finalised") else False
+        prog = {
+            "concert_venue": request.form.get("concert_venue"),
+            "concert_date": request.form.get("concert_date"),
+            "concert_times": request.form.get("concert_times"),
+            "band_name": request.form.get("band_name"),
+            "prog_item": request.form.getlist("prog_item"),
+            "is_finalised": is_finalised,
+            "created_by": session["user"]
+        }
+        mongo.db.progs.insert_one(prog)
+        flash("Concert Programme Successfully Added")
+        return redirect(url_for("get_progs"))
+
     venues = mongo.db.venues.find().sort("venue_name", 1)
     bands = mongo.db.bands.find().sort("band_name", 1)
     music_items = mongo.db.music_items.find().sort("genre_name"+"title", 1)
