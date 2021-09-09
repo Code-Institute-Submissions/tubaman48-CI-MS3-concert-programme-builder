@@ -125,6 +125,20 @@ def prog_add():
 
 @app.route("/prog_edit/<prog_id>", methods=["GET", "POST"])
 def prog_edit(prog_id):
+    if request.method == "POST":
+        is_finalised = True if request.form.get("is_finalised") else False
+        submit = {
+            "concert_venue": request.form.get("concert_venue"),
+            "concert_date": request.form.get("concert_date"),
+            "concert_times": request.form.get("concert_times"),
+            "band_name": request.form.get("band_name"),
+            "prog_item": request.form.getlist("prog_item"),
+            "is_finalised": is_finalised,
+            "created_by": session["user"]
+        }
+        mongo.db.progs.update({"_id": ObjectId(prog_id)}, submit)
+        flash("Concert Programme Successfully Updated")
+
     prog = mongo.db.progs.find_one({"_id": ObjectId(prog_id)})
     venues = mongo.db.venues.find().sort("venue_name", 1)
     bands = mongo.db.bands.find().sort("band_name", 1)
