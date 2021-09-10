@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="screen-nnn">
+        <div class="row">
+            <div class="col s12 m8 offset-m2 l6 offset-l3">
+                <h1>403</h1>
+                <h2>Forbidden</h2>
+                <p>Oops! - Client does not have access rights to the content!</p>
+                <a class="btn" href="{{ url_for('get_progs')}}">Go to Home Page</a>
+            </div>
+        </div>
+        <div>
+            <img src="{{url_for ('static', filename='images/logos/ConcertProgrammeBuilder_icon_450x450.svg')}}" 
+                alt="Concert Programme Builder website icon">
+        </div>
+    </div>
+
+{% endblock %}

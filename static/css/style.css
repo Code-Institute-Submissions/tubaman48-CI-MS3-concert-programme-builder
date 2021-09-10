@@ -14,3 +14,64 @@
     margin: 5px;
     line-height: 42px;
 }
+
+/************************************************** nnn page      */
+/* This covers formatting for nnn.html templates                  */
+/* where nnn = 400, 401, 402, 403, 404, 405, 500                  */
+
+.screen-nnn {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: -ms-grid;
+    display: grid; 
+    place-content: center center;
+    text-align: center;
+    color: black;
+    background-color: #98d4a6;
+}
+
+.screen-nnn h1 {
+    text-shadow: 0 0 .2rem red, 0 0 .2rem red;
+    font-size: 10rem;
+    letter-spacing: 20px;
+    color: red;
+}
+
+.screen-nnn h2 {
+    text-shadow: 0 0 .2rem white, 0 0 .2rem white;
+    font-size: 2rem; 
+    letter-spacing: 5px;
+    padding-bottom: 0.8rem;
+}
+
+.screen-nnn p {
+    text-shadow: 0 0 .15rem white, 0 0 .15rem white;
+    font-size: 1.3rem; 
+    letter-spacing: 1px;
+    padding-bottom: 1rem;
+}
+
+.screen-nnn a {
+    width: 50%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    text-decoration: none;
+    border: 5px solid yellow;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: .8rem 1.6rem;
+    cursor: pointer;
+    color: black;
+    text-shadow: 0 0 .1rem blue, 0 0 .1rem blue;
+    letter-spacing: 2px;
+    font-size: 1.3rem; 
+}
+
+.screen-nnn a:hover {
+    background-color: red;
+    color: whitesmoke;
+    border: 5px solid whitesmoke;
+}
