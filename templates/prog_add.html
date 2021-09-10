@@ -50,8 +50,17 @@
 			</div>
             <!-- music selection -->
             <div class="row">
+                <div class="tooltip-container">
+                    <a class="tooltipped" data-position="left" 
+                        data-tooltip="Minimum of 1 piece per programme<br>
+                            Typically require up to 6 pieces per 45 minutes<br>
+                            Highlight-Copy-Paste selection from Choose Music dropdown<br>
+                            into one of the 6 entries available below">
+                        <i class="far fa-question-circle prefix blue-text text-darken-4"></i>
+                    </a>
+                </div>
 				<div class="input-field col s12">
-                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
+                    <i class="fas fa-search prefix blue-text text-darken-4"></i>
 					<select id="title" name="title" class="validate" required>
                         <option value="" disabled selected>Choose Music</option>
                         {% for music_item in music_items %}
@@ -63,6 +72,54 @@
 					<label for="music_item.title">Music Items</label>
 				</div>
 			</div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
+                    <input id="prog_item_1" name="prog_item_1" minlength="3"
+                        type="text" class="validate" required>
+                    <label for="prog_item_1">Music Item 1</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
+                    <input id="prog_item_2" name="prog_item_2" 
+                        type="text" class="validate">
+                    <label for="prog_item_2">Music Item 2</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
+                    <input id="prog_item_3" name="prog_item_3" 
+                        type="text" class="validate">
+                    <label for="prog_item_3">Music Item 3</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
+                    <input id="prog_item_4" name="prog_item_4" 
+                        type="text" class="validate">
+                    <label for="prog_item_4">Music Item 4</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
+                    <input id="prog_item_5" name="prog_item_5"
+                        type="text" class="validate">
+                    <label for="prog_item_5">Music Item 5</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
+                    <input id="prog_item_6" name="prog_item_6" 
+                        type="text" class="validate">
+                    <label for="prog_item_6">Music Item 6</label>
+                </div>
+            </div>
             <!-- is finalised toggle -->
 			<div class="row">
 				<div class="input-field col s12">

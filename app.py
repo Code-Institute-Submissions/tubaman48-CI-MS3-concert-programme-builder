@@ -110,7 +110,12 @@ def prog_add():
             "concert_date": request.form.get("concert_date"),
             "concert_times": request.form.get("concert_times"),
             "band_name": request.form.get("band_name"),
-            "prog_item": request.form.getlist("prog_item"),
+            "prog_item_1": request.form.get("prog_item_1"),
+            "prog_item_2": request.form.get("prog_item_2"),
+            "prog_item_3": request.form.get("prog_item_3"),
+            "prog_item_4": request.form.get("prog_item_4"),
+            "prog_item_5": request.form.get("prog_item_5"),
+            "prog_item_6": request.form.get("prog_item_6"),
             "is_finalised": is_finalised,
             "created_by": session["user"]
         }
@@ -134,7 +139,12 @@ def prog_edit(prog_id):
             "concert_date": request.form.get("concert_date"),
             "concert_times": request.form.get("concert_times"),
             "band_name": request.form.get("band_name"),
-            "prog_item": request.form.getlist("prog_item"),
+            "prog_item_1": request.form.get("prog_item_1"),
+            "prog_item_2": request.form.get("prog_item_2"),
+            "prog_item_3": request.form.get("prog_item_3"),
+            "prog_item_4": request.form.get("prog_item_4"),
+            "prog_item_5": request.form.get("prog_item_5"),
+            "prog_item_6": request.form.get("prog_item_6"),
             "is_finalised": is_finalised,
             "created_by": session["user"]
         }
