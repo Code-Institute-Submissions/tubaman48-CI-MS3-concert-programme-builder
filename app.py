@@ -215,6 +215,13 @@ def get_pieces():
     return render_template("pieces.html", pieces=pieces)
 
 
+@app.route("/search_pieces", methods=["GET", "POST"])
+def search_pieces():
+    query = request.form.get("query")
+    pieces = list(mongo.db.music_items.find({"$text": {"$search": query}}))
+    return render_template("pieces.html", pieces=pieces)
+
+
 @app.route("/piece_add", methods=["GET", "POST"])
 def piece_add():
     if request.method == "POST":
