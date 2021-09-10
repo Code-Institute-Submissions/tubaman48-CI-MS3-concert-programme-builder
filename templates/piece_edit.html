@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="amber-text text-darken-4 center-align">Edit Music Item</h3>
+
+    <div class="row card-panel grey lighten-5">
+        <form class="col s12" method="POST" action="{{ url_for('piece_edit', piece_id=piece._id) }}">
+            <!-- genre selection -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-microphone-alt prefix amber-text text-darken-4"></i>
+					<select id="genre_name" name="genre_name" class="validate" required>
+                        <option value="" disabled selected>Choose Genre</option>
+                        {% for genre in genres %}
+                            {% if genre.genre_name == piece.genre_name %}
+                                <option value="{{ genre.genre_name }}" selected>{{ genre.genre_name }}</option>
+                            {% else %}
+                                <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+					<label for="genre_name">Genre</label>
+				</div>
+			</div>
+            <!-- title -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix amber-text text-darken-4"></i>
+                    <input id="title" name="title" minlength="3" maxlength="50"
+                        type="text" value="{{ piece.title }}" class="validate" required>
+                    <label for="title">Title of piece</label>
+                </div>
+            </div>
+            <!-- composer -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix amber-text text-darken-4"></i>
+                    <input id="composer" name="composer" minlength="3" maxlength="40"
+                        type="text" value="{{ piece.composer }}" class="validate" required>
+                    <label for="composer">Composer of piece</label>
+                </div>
+            </div>
+            <!-- arranger -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix amber-text text-darken-4"></i>
+                    <input id="arranger" name="arranger" minlength="3" maxlength="40"
+                        type="text" value="{{ piece.arranger }}" class="validate" required>
+                    <label for="arranger">Arranger of piece</label>
+                </div>
+            </div>
+            <!-- status -->
+            <div class="row">
+				<div class="input-field col s12">
+                    <i class="fas fa-users prefix amber-text text-darken-4"></i>
+					<select id="status" name="status" class="validate" required>
+                        <option value="" disabled selected>Choose Status</option>
+                        {% for status in statuses %}
+                            {% if status.status_type == piece.status %}
+                                <option value="{{ status.status_type }}" selected>{{ status.status_type }}</option>
+                            {% else %}
+                                <option value="{{ status.status_type }}">{{ status.status_type }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+					<label for="status">Status of Piece</label>
+				</div>
+			</div>
+            <!-- submit button -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <!-- cancel button -->
+                    <a href="{{ url_for('get_pieces') }}" class="btn-large red text-shadow">
+                        Cancel <i class="fas fa-times-circle right"></i>
+                    </a>
+                    <button type="submit" class="btn-large amber darken-1 text-shadow">
+                        Edit Music Item <i class="fas fa-edit right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

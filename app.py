@@ -25,6 +25,7 @@ def get_progs():
     return render_template("progs.html", progs=progs)
 
 
+# <-- User Management -->
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -99,6 +100,7 @@ def logout():
     return redirect(url_for("login"))
 
 
+# <-- Concert Programme Management -->
 @app.route("/prog_add", methods=["GET", "POST"])
 def prog_add():
     if request.method == "POST":
@@ -155,6 +157,7 @@ def prog_delete(prog_id):
     return redirect(url_for("get_progs"))
 
 
+# <-- Genre Management -->
 @app.route("/get_genres")
 def get_genres():
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
@@ -193,6 +196,63 @@ def genre_delete(genre_id):
     mongo.db.genres.remove({"_id": ObjectId(genre_id)})
     flash("Genre Successfully Deleted")
     return redirect(url_for("get_genres"))
+
+
+# <-- Piece (Music Items) Management -->
+@app.route("/get_pieces")
+def get_pieces():
+    pieces = list(mongo.db.music_items.find().sort("piece_name", 1))
+    return render_template("pieces.html", pieces=pieces)
+
+
+@app.route("/piece_add", methods=["GET", "POST"])
+def piece_add():
+    if request.method == "POST":
+        piece = {
+            "genre_name": request.form.get("genre_name"),
+            "title": request.form.get("title"),
+            "composer": request.form.get("composer"),
+            "arranger": request.form.get("arranger"),
+            "status": request.form.get("status"),
+            "created_by": session["user"]
+        }
+        mongo.db.music_items.insert_one(piece)
+        flash("New Piece Added")
+        return redirect(url_for("get_pieces"))
+
+    genres = mongo.db.genres.find().sort("genre_name", 1)
+    statuses = mongo.db.statuses.find().sort("status_type", 1)
+    return render_template(
+        "piece_add.html", genres=genres, statuses=statuses)
+
+
+@app.route("/piece_edit/<piece_id>", methods=["GET", "POST"])
+def piece_edit(piece_id):
+    if request.method == "POST":
+        submit = {
+            "genre_name": request.form.get("genre_name"),
+            "title": request.form.get("title"),
+            "composer": request.form.get("composer"),
+            "arranger": request.form.get("arranger"),
+            "status": request.form.get("status"),
+            "created_by": session["user"]
+        }
+        mongo.db.music_items.update({"_id": ObjectId(piece_id)}, submit)
+        flash("Piece Successfully Updated")
+        return redirect(url_for("get_pieces"))
+
+    piece = mongo.db.music_items.find_one({"_id": ObjectId(piece_id)})
+    genres = mongo.db.genres.find().sort("genre_name", 1)
+    statuses = mongo.db.statuses.find().sort("status_type", 1)
+    return render_template(
+        "piece_edit.html", piece=piece, genres=genres, statuses=statuses)
+
+
+@app.route("/piece_delete/<piece_id>")
+def piece_delete(piece_id):
+    mongo.db.music_items.remove({"_id": ObjectId(piece_id)})
+    flash("Piece Successfully Deleted")
+    return redirect(url_for("get_pieces"))
 
 
 if __name__ == "__main__":
