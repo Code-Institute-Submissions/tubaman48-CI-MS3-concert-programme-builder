@@ -75,3 +75,28 @@
     color: whitesmoke;
     border: 5px solid whitesmoke;
 }
+
+h4 {
+    font-size: 1.5rem;
+    color: orangered;
+}
+
+/************************************************** Media queries */
+/* Small devices (newer mobile phones, 372px and up) */
+@media (min-width:372px) {
+    nav .brand-logo {
+        font-size: 1.4rem;
+    }  
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width:768px) {
+    nav .brand-logo {
+        font-size: 1.8rem;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    nav .brand-logo {
+        font-size: 2rem;
+    }
+}

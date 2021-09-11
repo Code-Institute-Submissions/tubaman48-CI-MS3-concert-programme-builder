@@ -3,6 +3,17 @@
 
     <h3 class="amber-text text-darken-4 center-align">All Concert Programmes</h3>
 
+    {% if session.user %}
+    <!-- Only make the Add function available if registered user -->
+    <div class="row">
+        <div class="col s12 center-align">
+            <a href="{{ url_for('prog_add') }}" class="btn-large amber darken-2 text-shadow">
+                Add Programme <i class="fas fa-plus-square right"></i>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+
     <ul class="collapsible">
         {% for prog in progs %}
         <li>
@@ -12,6 +23,7 @@
                 </div>
                 <div class="col s2">
                     {% if session.user|lower == prog.created_by|lower %}
+                    <!-- Only make the Remove and Edit functions available if user created prog -->
                         <a href="{{ url_for('prog_delete', prog_id=prog._id) }}"
                             class="btn-small red accent-4">Remove</a>
                         <a href="{{ url_for('prog_edit', prog_id=prog._id) }}" 
@@ -33,9 +45,22 @@
             <div class="collapsible-body">
                 <p><strong>Playing between : {{ prog.concert_times }}</strong></p>
                 <p><strong>Band performing : {{ prog.band_name }}</strong></p>
-                {% for item in prog.prog_item %}
-                    <p>{{ item }}</p>
-                {% endfor %}
+                <p><strong>Music Piece 1   : {{ prog.prog_item_1 }}</strong></p>
+                {% if prog.prog_item_2 != "" %}
+                    <p><strong>Music Piece 2   : {{ prog.prog_item_2 }}</strong></p>
+                {% endif %}
+                {% if prog.prog_item_3 != "" %}
+                    <p><strong>Music Piece 3   : {{ prog.prog_item_3 }}</strong></p>
+                {% endif %}
+                {% if prog.prog_item_4 != "" %}
+                    <p><strong>Music Piece 4   : {{ prog.prog_item_4 }}</strong></p>
+                {% endif %}
+                {% if prog.prog_item_5 != "" %}
+                    <p><strong>Music Piece 5   : {{ prog.prog_item_5 }}</strong></p>
+                {% endif %}
+                {% if prog.prog_item_6 != "" %}
+                    <p><strong>Music Piece 6   : {{ prog.prog_item_6 }}</strong></p>
+                {% endif %}
                 <p><em>Created by: {{ prog.created_by }}</em></p>
             </div>
         </li>

@@ -7,6 +7,18 @@
                 <h3 class="center-align light-amber-text text-darken-4">
                     {{ username }}'s Profile
                 </h3>
+                <h4 class="light-amber-text text-darken-4">
+                    Site Permissions :
+                </h4>
+                {% if session.user|lower == "librarian"|lower %}
+                    <p>Programmes : Add allowed, Edit and Remove permitted on own entries</p>
+                    <p>Music      : Display, Add, Edit and Remove permitted on all entries</p>
+                    <p>Genres     : Display, Add, Edit and Remove permitted on all entries</p>
+                {% else %}
+                    <p>Programmes : Add allowed, Edit and Remove permitted on own entries</p>
+                    <p>Music      : No access to Add, Edit or Remove entries</p>
+                    <p>Genres     : No access to Add, Edit or Remove entries</p>
+                {% endif %}
             </div>
         </div>
     </div>

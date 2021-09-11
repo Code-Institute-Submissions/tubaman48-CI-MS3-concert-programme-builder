@@ -14,26 +14,26 @@
         type="text/css">
     {% block styles %}
     {% endblock %}
-    <title>Programme Manager</title>
+    <title>Concert Programme Builder</title>
 </head>
 <body>
     <header>
         <!== top navbar -->
         <nav class="nav-extended text-shadow light-amber darken-1">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_progs') }}" class="brand-logo">Programme Manager</a>
+                <a href="{{ url_for('get_progs') }}" class="brand-logo">Concert Programme Builder</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('get_progs') }}">Home</a></li>
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                        <li><a href="{{ url_for('prog_add') }}">New Prog</a></li>
+                        <li><a href="{{ url_for('get_progs') }}">Programmes</a></li>
                         {% if session.user|lower == "librarian"|lower %}
-                            <li><a href="{{ url_for('get_pieces') }}">Manage Music</a></li>
-                            <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
+                            <li><a href="{{ url_for('get_pieces') }}">Music</a></li>
+                            <li><a href="{{ url_for('get_genres') }}">Genres</a></li>
                         {% endif %}
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
+                        <li><a href="{{ url_for('get_progs') }}">Programmes</a></li>
                         <li><a href="{{ url_for('login') }}">Log In</a></li>
                         <li><a href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
@@ -43,17 +43,17 @@
         
         <!== mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align light-amber-text text-darken-4">Programme Manager</h4></li>
-            <li><a href="{{ url_for('get_progs') }}">Home</a></li>
+            <li><h4 class="center-align light-amber-text text-darken-4">Concert Programme Builder</h4></li>
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                <li><a href="{{ url_for('prog_add') }}">New Prog</a></li>
+                <li><a href="{{ url_for('get_progs') }}">Programmes</a></li>
                 {% if session.user|lower == "librarian"|lower %}
-                    <li><a href="{{ url_for('get_pieces') }}">Manage Music</a></li>
-                    <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
+                    <li><a href="{{ url_for('get_pieces') }}">Music</a></li>
+                    <li><a href="{{ url_for('get_genres') }}">Genres</a></li>
                 {% endif %}
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
+                <li><a href="{{ url_for('get_progs') }}">Programmes</a></li>
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
