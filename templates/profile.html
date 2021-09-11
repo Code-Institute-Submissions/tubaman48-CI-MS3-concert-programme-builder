@@ -11,13 +11,15 @@
                     Site Permissions :
                 </h4>
                 {% if session.user|lower == "librarian"|lower %}
-                    <p>Programmes : Add allowed, Edit and Remove permitted on own entries</p>
+                    <p>Programmes : Add allowed. Edit and Remove permitted only on own entries</p>
                     <p>Music      : Display, Add, Edit and Remove permitted on all entries</p>
                     <p>Genres     : Display, Add, Edit and Remove permitted on all entries</p>
+                    <p>Venues     : Display, Add, Edit and Remove permitted on all entries</p>
                 {% else %}
-                    <p>Programmes : Add allowed, Edit and Remove permitted on own entries</p>
-                    <p>Music      : No access to Add, Edit or Remove entries</p>
-                    <p>Genres     : No access to Add, Edit or Remove entries</p>
+                    <p>Programmes : Add allowed. Edit and Remove permitted only on own entries</p>
+                    <p>Music      : No access to Add, Edit or Remove entries (maintained by Librarian)</p>
+                    <p>Genres     : No access to Add, Edit or Remove entries (maintained by Librarian)</p>
+                    <p>Venues     : Display, Add, Edit and Remove permitted on all entries</p>
                 {% endif %}
             </div>
         </div>

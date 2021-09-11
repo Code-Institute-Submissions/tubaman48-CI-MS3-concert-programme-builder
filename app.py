@@ -208,6 +208,47 @@ def genre_delete(genre_id):
     return redirect(url_for("get_genres"))
 
 
+# <-- Venue Management -->
+@app.route("/get_venues")
+def get_venues():
+    venues = list(mongo.db.venues.find().sort("venue_name", 1))
+    return render_template("venues.html", venues=venues)
+
+
+@app.route("/venue_add", methods=["GET", "POST"])
+def venue_add():
+    if request.method == "POST":
+        venue = {
+            "venue_name": request.form.get("venue_name")
+        }
+        mongo.db.venues.insert_one(venue)
+        flash("New Venue Added")
+        return redirect(url_for("get_venues"))
+
+    return render_template("venue_add.html")
+
+
+@app.route("/venue_edit/<venue_id>", methods=["GET", "POST"])
+def venue_edit(venue_id):
+    if request.method == "POST":
+        submit = {
+            "venue_name": request.form.get("venue_name")
+        }
+        mongo.db.venues.update({"_id": ObjectId(venue_id)}, submit)
+        flash("Venue Successfully Updated")
+        return redirect(url_for("get_venues"))
+
+    venue = mongo.db.venues.find_one({"_id": ObjectId(venue_id)})
+    return render_template("venue_edit.html", venue=venue)
+
+
+@app.route("/venue_delete/<venue_id>")
+def venue_delete(venue_id):
+    mongo.db.venues.remove({"_id": ObjectId(venue_id)})
+    flash("Venue Successfully Deleted")
+    return redirect(url_for("get_venues"))
+
+
 # <-- Piece (Music Items) Management -->
 @app.route("/get_pieces")
 def get_pieces():

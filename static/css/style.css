@@ -8,11 +8,18 @@
 
 .btn-small {
     margin: 5px;
+    width: 80px;
 }
 
 .collapsible-header .col strong {
     margin: 5px;
     line-height: 42px;
+}
+
+/****************************** venues.html extra formatting      */
+.venue-format {
+    margin-top: 5px;
+    font-size: 1.5rem;
 }
 
 /************************************************** nnn page      */
