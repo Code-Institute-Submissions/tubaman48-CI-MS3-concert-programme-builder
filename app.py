@@ -313,6 +313,62 @@ def piece_delete(piece_id):
     return redirect(url_for("get_pieces"))
 
 
+# <-- HTTP error pages -->
+# https://flask.palletsprojects.com/en/2.0.x/errorhandling/
+@app.errorhandler(400)
+def server_error(e):
+    """
+    Renders a custom 400 error page with a link
+    to take the user back to homework.html
+    """
+    return render_template('400.html'), 400
+
+
+@app.errorhandler(401)
+def bad_request(e):
+    """
+    Renders a custom 401 error page with a link
+    to take the user back to progs.html
+    """
+    return render_template('401.html'), 401
+
+
+@app.errorhandler(403)
+def forbidden(e):
+    """
+    Renders a custom 403 error page with a link
+    to take the user back to progs.html
+    """
+    return render_template('403.html'), 403
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    Renders a custom 404 error page with a link
+    to take the user back to progs.html
+    """
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(405)
+def method_not_allowed(e):
+    """
+    Renders a custom 405 error page with a link
+    to take the user back to homework.html
+    """
+    return render_template('405.html'), 405
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    """
+    Renders a custom 500 error page with a link
+    to take the user back to progs.html
+    """
+    return render_template('500.html'), 500
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

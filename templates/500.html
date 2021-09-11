@@ -3,16 +3,13 @@
 
     <div class="screen-nnn">
         <div class="row">
-            <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <div class="col s12 m8 l6">
                 <h1>500</h1>
                 <h2>Internal Server Error</h2>
                 <p>Oops! - The server has encountered a situation that it does not know how to handle!</p>
-                <a class="btn" href="{{ url_for('get_progs')}}">Go to Home Page</a>
-            </div>
-        </div>
-        <div>
-            <img src="{{url_for ('static', filename='images/logos/ConcertProgrammeBuilder_icon_450x450.svg')}}" 
-                alt="Concert Programme Builder website icon">
+                <a class="btn" href="{{ url_for('get_progs')}}">Go to Home Page<br>(All Programmes)</a>
+                <img src="{{url_for ('static', filename='images/logos/ConcertProgrammeBuilder_icon_450x450.svg')}}" 
+                    class="iconsize" alt="Concert Programme Builder website icon">
         </div>
     </div>
 
