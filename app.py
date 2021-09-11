@@ -319,7 +319,7 @@ def piece_delete(piece_id):
 def server_error(e):
     """
     Renders a custom 400 error page with a link
-    to take the user back to homework.html
+    to take the user back to progs.html
     """
     return render_template('400.html'), 400
 
@@ -355,7 +355,7 @@ def page_not_found(e):
 def method_not_allowed(e):
     """
     Renders a custom 405 error page with a link
-    to take the user back to homework.html
+    to take the user back to progs.html
     """
     return render_template('405.html'), 405
 
