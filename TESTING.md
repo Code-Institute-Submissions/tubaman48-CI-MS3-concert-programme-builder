@@ -54,83 +54,91 @@ The code passed all checks.
 
 # Testing From User Stories
 
-## User Stories
+## User Stories implemented thus far
 > - _"As a music director we wish to construct concert programmes of music based on pieces that are available in the music library, pieces that we need to buy or pieces being arranged"_
-> - _"As a music director we wish to be able to search for, create, display, update and delete music programmes for upcoming concerts"_
-> - _"As a music director we wish to be able to search for historic music programmes to help formulate new programmes"_
+> - - Catered for via the editable Programmes menu option available only to registered users. Note that for integrity purposes the editing and removal of programmes can only be carried by the creator of the programme.
+> - _"As a music director we wish to be able to create, display, update and delete music programmes for upcoming concerts"_
+> - - Catered for via the editable Programmes menu option available only to registered users. Note that for integrity purposes the editing and removal of programmes can only be carried by the creator of the programme.
 > - _"As a music librarian I wish to be able to maintain a current list of music available with search, create, display, update and delete capabilities"_
-> - _"As a music librarian I wish to be able to maintain a current list of music programmes with search, create, display, update and delete capabilities"_
-> - _"As a User Admin I wish to be able to search for, create, display, update and delete users of the site"_
+> - - Catered for via the Music menu option available only to the librarian.
+> - _"As a music librarian I wish to be able to maintain a current list of genres available to assign to music items with create, display, update and delete capabilities"_
+> - - Catered for via the Genres menu option available only to the librarian.
+> - _"As a music librarian I wish to be able to maintain a current list of venues available to assign to concert programmes with create, display, update and delete capabilities"_
+> - - Catered for via the Venues menu option available only to registered users.
+> - _"As a music librarian I wish to be able to maintain a current list of music programmes with create, display, update and delete capabilities"_
+> - - Catered for via the editable Programmes menu option available only to registered users. Note that for integrity purposes the editing and removal of programmes can only be carried by the creator of the programme.
 > - _"As a member of the band I wish to have access to search for and display any music programmes (historic and current) via registration process"_
 > - _"As a member of the general public I wish to have access to search for and display any music programmes (historic and current) without having to register to the site"_
+> - - Non-registered read-only access to programmes provided as per test screen capture scenario 1.1 below (Logged out (Programmes Page))
 > - _"As a user of this resource (in any capacity) I would like a responsive design that caters for mobile and non-mobile devices"_
+> - - Catered for using materialise css grid classes with some custom media queries to improve formatting for smaller mobile devices.
 
 # Manual User Testing
 
 > - After initial wireframe design, I checked each navigation item link is working correctly to each section or page. I set a _temporary_ contrasting background colour to each page to mark out each section.
 > - Tested responsiveness of the wireframe using Dev Tools and confirmed basic structure looks and works well on all mobile decides from 320px, up to desktop size.
 
-## ** Navigation Menu Bar tests **
+## Navigation Menu Bar tests
 > - Tested **Logo text** in menu bar to ensure it points to the Programmes page.
 > - Tested default **Programmes, Login, Register** links in menu bar to ensure they point to each section and position correctly.
 > - Tested **Profile, Venues** links in menu bar (available/visible only to all logged on users) to ensure that it points to the section and positions correctly.
 > - Tested **Music, Genres** links in menu bar (available/visible only to Librarian user) to ensure that it points to the section and positions correctly.
 
-## ** 1. User menu options (whilst logged out) **
+## 1. User menu options (whilst logged out)
 
-### ** 1.1 Logged out (Programmes Page)
+### 1.1 Logged out (Programmes Page)
 > - Only **Programmes, Login, Register** links available in menu bar
 ![tsc-01-01](/static/images/test-screen-captures/tsc-01-01-loggedout-progs.png)
 
-### ** 1.2 Logged out (Log In Page)
+### 1.2 Logged out (Log In Page)
 > - Only **Programmes, Login, Register** links available in menu bar
 ![tsc-01-02](/static/images/test-screen-captures/tsc-01-02-loggedout-login.png)
 
-### ** 1.3 Logged out (Register Page)
+### 1.3 Logged out (Register Page)
 > - Only **Programmes, Login, Register** links available in menu bar
 ![tsc-01-03](/static/images/test-screen-captures/tsc-01-03-loggedout-register.png)
 
-## ** 2. User menu options (whilst logged in as general user) **
+## 2. User menu options (whilst logged in as general user)
 
-### ** 2.1 Logged in - General User (Profile Page)
+### 2.1 Logged in - General User (Profile Page)
 > - Only **Profile, Programmes, Venues, Log Out** links available in menu bar
 ![tsc-02-01](/static/images/test-screen-captures/tsc-02-01-loggedin-gen-profile.png)
 > - Above screenshot is from immediately after successful registration - complete with "Registration Successful!" flash message
 
-### ** 2.2 Logged in - General User (Programmes Page)
+### 2.2 Logged in - General User (Programmes Page)
 > - Only **Profile, Programmes, Venues, Log Out** links available in menu bar
 ![tsc-02-02](/static/images/test-screen-captures/tsc-02-02-loggedin-gen-progs.png)
 
-### ** 2.3 Logged in - General User (Venues Page)
+### 2.3 Logged in - General User (Venues Page)
 > - Only **Profile, Programmes, Venues, Log Out** links available in menu bar
 ![tsc-02-03](/static/images/test-screen-captures/tsc-02-03-loggedin-gen-venues.png)
 
-## ** 3. User menu options (whilst logged in as Librarian user) **
+## 3. User menu options (whilst logged in as Librarian user)
 
-### ** 3.1 Logged in - Librarian User (Profile Page)
+### 3.1 Logged in - Librarian User (Profile Page)
 > - Only **Profile, Programmes, Music, Genres, Venues, Log Out** links available in menu bar
 ![tsc-03-01](/static/images/test-screen-captures/tsc-03-01-loggedin-lib-profile.png)
 > - Above screenshot is from immediately after successful login - complete with "Welcome, Librarian" flash message
 
-### ** 3.2 Logged in - Librarian User (Programmes Page)
+### 3.2 Logged in - Librarian User (Programmes Page)
 > - Only **Profile, Programmes, Music, Genres, Venues, Log Out** links available in menu bar
 ![tsc-03-02](/static/images/test-screen-captures/tsc-03-02-loggedin-lib-progs.png)
 
-### ** 3.3 Logged in - Librarian User (Music Page)
+### 3.3 Logged in - Librarian User (Music Page)
 > - Only **Profile, Programmes, Music, Genres, Venues, Log Out** links available in menu bar
 ![tsc-03-03](/static/images/test-screen-captures/tsc-03-03-loggedin-lib-music.png)
 
-### ** 3.4 Logged in - Librarian User (Genres Page)
+### 3.4 Logged in - Librarian User (Genres Page)
 > - Only **Profile, Programmes, Music, Genres, Venues, Log Out** links available in menu bar
 ![tsc-03-04](/static/images/test-screen-captures/tsc-03-04-loggedin-lib-genres.png)
 
-### ** 3.5 Logged in - Librarian User (Venues Page)
+### 3.5 Logged in - Librarian User (Venues Page)
 > - Only **Profile, Programmes, Music, Genres, Venues, Log Out** links available in menu bar
 ![tsc-03-05](/static/images/test-screen-captures/tsc-03-05-loggedin-lib-venues.png)
 
 # Responsive Testing
 
-## ** General functional and usability tests **
+## General functional and usability tests
 > - Further testing of Responsiveness of all the pages (excluding the nnn.html pages covering common http error codes) using [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
 > - &#9989;01.- [Programmes Page] (https://search.google.com/test/mobile-friendly?id=zkKOTxnvCJGYXjJV9EIYdA)
 > - - &#9989;01-01. [Add Programme Page] (https://search.google.com/test/mobile-friendly?id=1q8UeWbBw43hWaiE8IJ9xQ)
@@ -167,7 +175,10 @@ This could be because the page is unavailable or blocked by robots.txt"
 
 
 # Bugs and Fixes
+## Title text overflow issue
+> - Default font-size settings for materialise brand-logo class within nav elements was causing the title text to overflow outside of the nav bar area.
+> - Resolution was to introduce some media query overrides within the style.css file.
 
 # Known Bugs
- 
-
+## Auto-population of music items within a concert programme to be coded
+> - Clunky manual copy and paste tool tip in place as a tactical solution to populate a selected music item within the programme based on the music item selected via the inline query just above the 6 music item entries (ran out of time before project deadline to construct extra code required to auto-populate).

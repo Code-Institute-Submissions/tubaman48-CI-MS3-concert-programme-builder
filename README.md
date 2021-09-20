@@ -59,18 +59,22 @@ The priority focus is on ease of use by the different types of user.
 
 The following user stories remain in the scope of the final project delivered :
 > - _"As a music director we wish to construct concert programmes of music based on pieces that are available in the music library, pieces that we need to buy or pieces being arranged"_
-> - _"As a music director we wish to be able to search for, create, display, update and delete music programmes for upcoming concerts"_
-> - _"As a music director we wish to be able to search for historic music programmes to help formulate new programmes"_
+> - _"As a music director we wish to be able to create, display, update and delete music programmes for upcoming concerts"_
 > - _"As a music librarian I wish to be able to maintain a current list of music available with search, create, display, update and delete capabilities"_
-> - _"As a music librarian I wish to be able to maintain a current list of music programmes with search, create, display, update and delete capabilities"_
-> - _"As a User Admin I wish to be able to search for, create, display, update and delete users of the site"_
+> - _"As a music librarian I wish to be able to maintain a current list of genres available to assign to music items with create, display, update and delete capabilities"_
+> - _"As a music librarian I wish to be able to maintain a current list of venues available to assign to concert programmes with create, display, update and delete capabilities"_
+> - _"As a music librarian I wish to be able to maintain a current list of music programmes with create, display, update and delete capabilities"_
 > - _"As a member of the band I wish to have access to search for and display any music programmes (historic and current) via registration process"_
 > - _"As a member of the general public I wish to have access to search for and display any music programmes (historic and current) without having to register to the site"_
 > - _"As a user of this resource (in any capacity) I would like a responsive design that caters for mobile and non-mobile devices"_
 
 The following user stories were descoped early on in the project due to time constraints :
 > - _"As a music director we would like to be able reference pieces in other band libraries that we could borrow"_
+> - _"As a music director we wish to be able to search for music programmes for upcoming concerts"_
+> - _"As a music director we wish to be able to search for historic music programmes to help formulate new programmes"_
 > - _"As a music librarian I wish to be able to include in the current list of music available pieces that belong to another band's library which we have permission to borrow"_
+> - _"As a music librarian I wish to be able to maintain a current list of bands available to assign to concert programmes with create, display, update and delete capabilities"_
+> - _"As a User Admin I wish to be able to search for, create, display, update and delete users of the site"_
 > - _"As a user of this resource (in any capacity) I would like to be able to print out individual concert programmes"_
 
 - ## 1. Strategy
