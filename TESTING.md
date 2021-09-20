@@ -49,7 +49,8 @@ The code passed all checks.
 
 # Lighthouse Testing
 
-> - to be done
+> - Rating as at 18:00 on 20th Sep 2021 (generated via Chrome referencing live Heroku app URL) :
+![lighthouse-01](/static/images/MS3-lighthouse-rating-2021-09-20-1800.png)
 
 # Testing From User Stories
 
