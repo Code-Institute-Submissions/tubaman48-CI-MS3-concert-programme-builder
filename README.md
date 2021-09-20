@@ -12,7 +12,7 @@
 -   Musical Directors for the creation and maintenance of concert programmes
 -   Members of the public and band members who want to view concert programmes (past and present)
 
-![Image]   (/static/images/CI-MS3-Concert-Programme-Builder_mock_up.png to add)
+![Image](/static/images/CI-MS3-Concert-Programme-Builder_mock_up.png)
 
 ---
 
@@ -67,11 +67,11 @@ The following user stories remain in the scope of the final project delivered :
 > - _"As a member of the band I wish to have access to search for and display any music programmes (historic and current) via registration process"_
 > - _"As a member of the general public I wish to have access to search for and display any music programmes (historic and current) without having to register to the site"_
 > - _"As a user of this resource (in any capacity) I would like a responsive design that caters for mobile and non-mobile devices"_
-> - _"As a user of this resource (in any capacity) I would like to be able to print out individual concert programmes"_
 
 The following user stories were descoped early on in the project due to time constraints :
 > - _"As a music director we would like to be able reference pieces in other band libraries that we could borrow"_
 > - _"As a music librarian I wish to be able to include in the current list of music available pieces that belong to another band's library which we have permission to borrow"_
+> - _"As a user of this resource (in any capacity) I would like to be able to print out individual concert programmes"_
 
 - ## 1. Strategy
 
@@ -106,13 +106,14 @@ The following user stories were descoped early on in the project due to time con
 
 - ## 4. Skeleton
 
-> - [Wireframes] (/static/docs/RL-CI-MS3-Wireframes.pdf): A multi page website using Flask to route to the appropriate template page, dependent on the options selected.
->    The Home page provides a textual introduction to the site.
->    The Music Items page (only visible to the Librarian, Musical Director(s) and registered Band Members) presents a summary list of music items available with a search facility based on the Title. Additional edit capabilities are provided only to the Librarian, Musical Director(s) for integrity purposes.
->    The Concert Programmes page (visible to all users) presents a summary list of concert programmes available with a search facility based on the venue and/or date. Additional edit capabilities are provided only to the Librarian, Musical Director(s) for integrity purposes. 
->    The Concert Programme Details page (available via the Concert Programmes page) provides the date, times, venue and content of the programme with an option to print.
->    The Login / Register page.
->    The User Admin page (only accessible to the User Admin) for the creation, display, search, upadte and delete of user profiles.
+> -  Wireframes available [here](/static/docs/RLs-CI-MS3-Wireframes.pdf).
+> -  A multi page website using Flask to route to the appropriate template page, dependent on the options selected made up of the following pages :
+> -  The Home page provides a textual introduction to the site.
+> -  The Music Items page (only visible to the Librarian, Musical Director(s) and registered Band Members) presents a summary list of music items available with a search facility based on the Title. Additional edit capabilities are provided only to the Librarian, Musical Director(s) for integrity purposes.
+> -  The Concert Programmes page (visible to all users) presents a summary list of concert programmes available with a search facility based on the venue and/or date. Additional edit capabilities are provided only to the Librarian, Musical Director(s) for integrity purposes. 
+> -  The Concert Programme Details page (available via the Concert Programmes page) provides the date, times, venue and content of the programme with an option to print.
+> -  The Login / Register page.
+> -  The User Admin page (only accessible to the User Admin) for the creation, display, search, update and delete of user profiles. (Note : this feature was dropped from the initial scope of this project due to time constraints)
 >
 > - Fixed navigation bar - Menu headings pointing to each of the available sections (dependent on user type).
 >
@@ -124,8 +125,8 @@ The following user stories were descoped early on in the project due to time con
 >
 > ### Colours
 >
-> Soft (neutral) pastel yellow (# to be determined) chosen as the background colour for the generic header section (including navigation bar).
-> For body text, I've used a combination of a dark grey (#242424) and off-white (#fafafa), maintaining strong, balanced contrasts.
+> Soft (neutral) amber chosen as the background colour for the generic header section (including navigation bar).
+> For body text, I've used the same amber colouring for images and text, with the exception of blue for search facilities, maintaining strong, balanced contrasts.
 > 
 > ### Typography
 >
@@ -148,19 +149,21 @@ The following user stories were descoped early on in the project due to time con
 > For the collections pages, there is a dropdown menu in which all of those pages are held. 
 > This stops the navigation from becoming too cluttered. 
 >
-> The navigation buttons update depending on whether a user is logged in, and whether that user is the admin:
+> The navigation buttons update depending on whether a user is logged in, and whether that user is the admin
+> (note that Concert Programmes can only be edited by the registered user who created them) :
 
-| Nav Link              |Not logged in  |Logged in as user|Logged in as Librarian |Logged in as MD |Logged in as admin
-|:-------------         |:------------- |:------------- |:------------- |:------------- |:------------- |
-|Logo(back to home)     |&#9989;        |&#9989;        |&#9989;        |&#9989;        |&#9989;
-|Music Items            |&#10060;       |&#10060;       |&#9989;        |&#9989;        |&#9989;
-|Concert Programmes     |&#9989;        |&#9989;        |&#9989;        |&#9989;        |&#9989;
-|Collections            |&#9989;        |&#9989;        |&#9989;        |&#9989;        |&#9989;
-|Manage Collections     |&#10060;       |&#10060;       |&#9989;        |&#9989;        |&#9989;
-|Account                |&#10060;       |&#9989;        |&#9989;        |&#9989;        |&#9989;
-|Log Out                |&#10060;       |&#9989;        |&#9989;        |&#9989;        |&#9989;
-|Register               |&#9989;        |&#10060;       |&#10060;       |&#10060;       |&#10060;
-|Log In                 |&#9989;        |&#10060;       |&#10060;       |&#10060;       |&#10060;
+| Nav Link              |Not logged in  |Logged in as user|Logged in as Librarian (admin)
+|:-------------         |:------------- |:------------- |:------------- |
+|Logo(back to home)     |&#9989;        |&#9989;        |&#9989;
+|Profile                |&#10060;       |&#9989;        |&#9989;
+|New Prog               |&#10060;       |&#9989;        |&#9989;
+|Concert Programmes     |&#9989;        |&#9989;        |&#9989;
+|Manage Music           |&#10060;       |&#10060;       |&#9989;
+|Manage Genres          |&#10060;       |&#10060;       |&#9989;
+|Manage Venues          |&#10060;       |&#9989;        |&#9989;
+|Log Out                |&#10060;       |&#9989;        |&#9989;
+|Register               |&#9989;        |&#10060;       |&#10060;
+|Log In                 |&#9989;        |&#10060;       |&#10060;
 
 > - Designed with HTML5, CSS3, Javascript, Python and Materialise within a Flask framework deployed onto Heroku.
 > - Site made up of multiple template pages routed to via app.py made up of a fixed navigation bar followed by the appropriate content as outlined above under the UX Skeleton section
@@ -176,9 +179,7 @@ The following user stories were descoped early on in the project due to time con
 # Database
 
 > MongoDB's non-relational database structure was ideal for this site as there were very few relationships between the collections on the site.
-> Below is the schema for my database:
->
-> ![database schema] (static/images/README/db-schema.PNG)
+> Below are the definitions of the collections used within my database:
 
 ## genres collection
 
@@ -201,6 +202,13 @@ The following user stories were descoped early on in the project due to time con
 |_id                    |ObjectId       |
 |venue_name             |string         |used in *programmes* to detail the location of concert
 
+## statuses collection
+
+| Key                   |Value type     |Desc           |
+|:-------------         |:------------- |:------------- |
+|_id                    |ObjectId       |
+|status_type            |string         |used in *music_items* to detail the whereabouts of each piece of music
+
 ## music_items collection
 
 | Key                   |Value type     |Desc           |
@@ -222,7 +230,12 @@ The following user stories were descoped early on in the project due to time con
 |concert_venue          |string         |location of concert from *venues*
 |concert_date           |date           |date of concert
 |concert_times          |time           |times of concert
-|programme_item         |array          |collection of selected pieces from *music_items*
+|prog_item_1            |string         |1st chosen item on programme
+|prog_item_2            |string         |2nd chosen item on programme
+|prog_item_3            |string         |3rd chosen item on programme
+|prog_item_4            |string         |4th chosen item on programme
+|prog_item_5            |string         |5th chosen item on programme
+|prog_item_6            |string         |6th chosen item on programme
 |created_by             |ObjectId       |object id taken from *users*
 
 ## users collection
@@ -232,14 +245,7 @@ The following user stories were descoped early on in the project due to time con
 |_id                    |ObjectId       |used in *music_items* and *programmes*
 |username               |string         |
 |password               |string         |hashed password for user security
-|role                   |string         |used to determine user rights on some of the pages from *roles*
 
-## roles collection
-
-| User                  |Value type     |Desc           |
-|:-------------         |:------------- |:------------- |
-|_id                    |ObjectId       |used in *music_items* and *programmes*
-|username               |string         |
 
 ---
 
@@ -262,16 +268,11 @@ The following user stories were descoped early on in the project due to time con
 > - [Pip3](https://pip.pypa.io/en/stable/)
 > - [dnspython](https://www.dnspython.org/)
 > - [jQuery](https://jquery.com/)
-> - [Flask Paginate](https://pythonhosted.org/Flask-paginate/)  ???
 > - [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
 > - [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
 > - [Materialize](https://materializecss.com/)
-> - [Bootstrap](https://getbootstrap.com/) - by linking via [BootstrapCDN](https://www.bootstrapcdn.com/) to HTML Doc.
->  (Bootstrap to be replaced with Materialise)
 >
 > - [FontAwesome](https://fontawesome.com/) - used on all pages throughout the website to add icons for aesthetic and UX purposes.
->
-> - [Google Fonts](https://fonts.google.com/) - used to import the 'Lato' and 'Oswald' fonts into the style.css file which are used on all pages throughout the project.
 
 ## 3. Workspace, version control and Repository storage
 
@@ -317,7 +318,6 @@ The following user stories were descoped early on in the project due to time con
 > - [TinyPNG](https://tinypng.com/) - Efficient compression of images for site.
 > - [Am I Responsive](http://ami.responsivedesign.is/) - Responsive website mockup image generator.
 > - [Balsamiq](https://balsamiq.com/wireframes/) - Wireframing design tool.
-> - [Bootstrap Grid Explanation by Anna Greaves](https://ajgreaves.github.io/bootstrap-grid-demo/) - This was an invaluable resource for me to wrap my head around Grid layouts.
 ---
 
 # Testing
