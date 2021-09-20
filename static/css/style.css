@@ -96,20 +96,35 @@ h4 {
 }
 
 /************************************************** Media queries */
-/* Small devices (newer mobile phones, 372px and up) */
-@media (min-width:372px) {
+/* Small to Medium devices (newer mobile phones, up to 768px) */
+@media only screen and (max-width:768px) {
     nav .brand-logo {
         font-size: 1.4rem;
+        left: 40%;
+    }  
+}
+/* Small devices (newer mobile phones, up to 480px) */
+@media only screen and (max-width:480px) {
+    nav .brand-logo {
+        font-size: 1.2rem;
+        left: 35%;
+    }  
+}
+/* Extra Small devices (older mobile phones, up to 372px) */
+@media only screen and (max-width:372px) {
+    nav .brand-logo {
+        font-size: 1rem;
+        left: 35%;
     }  
 }
 /* Medium devices (tablets, 768px and up) */
-@media (min-width:768px) {
+@media only screen and (min-width:768px) {
     nav .brand-logo {
         font-size: 1.8rem;
     }
 }
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
+@media only screen and (min-width: 992px) {
     nav .brand-logo {
         font-size: 2rem;
     }
