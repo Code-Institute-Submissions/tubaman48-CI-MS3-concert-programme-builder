@@ -4,6 +4,8 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from bson import json_util
+from flask import jsonify, json
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -86,7 +88,8 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        progs = list(mongo.db.progs.find({'created_by': session["user"]}))
+        return render_template("profile.html", username=username, progs=progs)
 
     return redirect(url_for("login"))
 
@@ -310,6 +313,16 @@ def piece_delete(piece_id):
     mongo.db.music_items.remove({"_id": ObjectId(piece_id)})
     flash("Piece Successfully Deleted")
     return redirect(url_for("get_pieces"))
+
+
+@app.route("/music_item/<genre_name>", methods=["GET"])
+def get_music_items(genre_name):
+    print('The genre_name is ', genre_name)
+    music_items = list(mongo.db.music_items.find({"genre_name": genre_name}))
+    print('The music_items are ', music_items)
+
+    data = {'music_items': json.loads(json_util.dumps(music_items))}
+    return jsonify(data), 200
 
 
 # <-- HTTP error pages -->

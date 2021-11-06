@@ -70,16 +70,16 @@
                 </div>
 				<div class="input-field col s12">
                     <i class="fas fa-search prefix blue-text text-darken-4"></i>
-					<select id="title" name="title" class="validate" required>
+					<select id="music_title" name="title" class="validate" required>
                         <option value="" disabled>Choose Music</option>
                         {% for music_item in music_items %}
                             <!-- LOGIC ON FOLLOWING LINE NEEDS FIXING !!! -->
                             {% if music_item.genre_name == prog.title %}
-                                <option value="{{ music_item.genre_name }} {{ music_item.title }}" selected>
+                                <option value="{{ music_item.genre_name }}" selected>
                                     {{ music_item.genre_name }}:{{ music_item.title }}
                                 </option>
                             {% else %}
-                                <option value="{{ music_item.genre_name }} {{ music_item.title }}">
+                                <option value="{{ music_item.genre_name }}">
                                     {{ music_item.genre_name }}:{{ music_item.title }}
                                 </option>
                             {% endif %}
@@ -88,6 +88,14 @@
 					<label for="music_item.title">Music Items</label>
 				</div>
 			</div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="music_items_selector" name="title" class="validate" multiple required>
+
+                    </select>
+
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-music prefix amber-text text-darken-4"></i>

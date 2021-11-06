@@ -34,5 +34,46 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        {% for prog in progs %}
+            <div class="col s12 m4 center-align">  
+                
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-4">{{ prog.concert_venue }} </span>
+                        <span class="card-title grey-text text-darken-3"> <i class="material-icons dp48">schedule</i> {{ prog.concert_date }} </span>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                        <p><strong>Playing between : {{ prog.concert_times }}</strong></p>
+                        <p><strong>Band performing : {{ prog.band_name }}</strong></p>
+                        <p><strong>Music Piece 1   : {{ prog.prog_item_1 }}</strong></p>
+                        {% if prog.prog_item_2 != "" %}
+                            <p><strong>Music Piece 2   : {{ prog.prog_item_2 }}</strong></p>
+                        {% endif %}
+                        {% if prog.prog_item_3 != "" %}
+                            <p><strong>Music Piece 3   : {{ prog.prog_item_3 }}</strong></p>
+                        {% endif %}
+                        {% if prog.prog_item_4 != "" %}
+                            <p><strong>Music Piece 4   : {{ prog.prog_item_4 }}</strong></p>
+                        {% endif %}
+                        {% if prog.prog_item_5 != "" %}
+                            <p><strong>Music Piece 5   : {{ prog.prog_item_5 }}</strong></p>
+                        {% endif %}
+                        {% if prog.prog_item_6 != "" %}
+                            <p><strong>Music Piece 6   : {{ prog.prog_item_6 }}</strong></p>
+                        {% endif %}
+                        <p><em>Created by: {{ prog.created_by }}</em></p>
+                    </div>
+                    {% if session.user|lower == prog.created_by|lower %}
+                        <div class="card-action">
+                            <a href="{{ url_for('prog_delete', prog_id=prog._id) }}" class="btn-small red accent-4">Delete</a>
+                            <a href="{{ url_for('prog_edit', prog_id=prog._id) }}" 
+                            class="btn-small light-blue lighten-1">Edit</a>
+                        </div>
+                    {% endif %}
+                </div>
 
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
