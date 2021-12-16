@@ -312,7 +312,8 @@ def get_pieces():
     """
     Function to list pieces.
     """
-    pieces = list(mongo.db.music_items.find().sort("piece_name", 1))
+    pieces = list(mongo.db.music_items.find().sort(
+        [("genre_name", 1), ("title", 1)]))
     return render_template("pieces.html", pieces=pieces)
 
 
