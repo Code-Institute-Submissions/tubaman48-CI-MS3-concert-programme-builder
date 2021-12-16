@@ -1,3 +1,5 @@
+""" Application function definitions and routing """
+
 import os
 from flask import (
     Flask, flash, render_template,
@@ -15,7 +17,7 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.secret_key = os.environ.get("SECRET_KEY")
+app.secret_key = os.environ.get("MS3_SECRET_KEY")
 
 mongo = PyMongo(app)
 
@@ -23,6 +25,9 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_progs")
 def get_progs():
+    """
+    Function to display a list of all concert programmes.
+    """
     progs = list(mongo.db.progs.find())
     return render_template("progs.html", progs=progs)
 
@@ -30,6 +35,11 @@ def get_progs():
 # <-- User Management -->
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Function for allowing new members to register on the site.
+    Also checks if the username is already registered on the site.
+    Existing members can also follow the link to log in from this page.
+    """
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
@@ -39,11 +49,11 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
 
-        register = {
+        register_new = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
-        mongo.db.users.insert_one(register)
+        mongo.db.users.insert_one(register_new)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
@@ -55,6 +65,10 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Function for logging in existing users.
+    New users can follow the link to register a new account from here.
+    """
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -83,6 +97,9 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """
+    Function to show user profile details (if user is logged in).
+    """
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -96,6 +113,9 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
+    """
+    Function to allow users to logout of the site.
+    """
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
@@ -105,6 +125,10 @@ def logout():
 # <-- Concert Programme Management -->
 @app.route("/prog_add", methods=["GET", "POST"])
 def prog_add():
+    """
+    Registered users can create a new concert programme from this page.
+    The drop down menu allows existing pieces to be selected for the programme.
+    """
     if request.method == "POST":
         is_finalised = True if request.form.get("is_finalised") else False
         prog = {
@@ -112,12 +136,7 @@ def prog_add():
             "concert_date": request.form.get("concert_date"),
             "concert_times": request.form.get("concert_times"),
             "band_name": request.form.get("band_name"),
-            "prog_item_1": request.form.get("prog_item_1"),
-            "prog_item_2": request.form.get("prog_item_2"),
-            "prog_item_3": request.form.get("prog_item_3"),
-            "prog_item_4": request.form.get("prog_item_4"),
-            "prog_item_5": request.form.get("prog_item_5"),
-            "prog_item_6": request.form.get("prog_item_6"),
+            "prog_items": request.form.getlist("music_items_selector"),
             "is_finalised": is_finalised,
             "created_by": session["user"]
         }
@@ -128,12 +147,20 @@ def prog_add():
     venues = mongo.db.venues.find().sort("venue_name", 1)
     bands = mongo.db.bands.find().sort("band_name", 1)
     music_items = mongo.db.music_items.find().sort("genre_name"+"title", 1)
+    genres = mongo.db.genres.find().sort("genre_name", 1)
     return render_template(
-        "prog_add.html", venues=venues, bands=bands, music_items=music_items)
+        "prog_add.html",
+        venues=venues, bands=bands, music_items=music_items, genres=genres)
 
 
 @app.route("/prog_edit/<prog_id>", methods=["GET", "POST"])
 def prog_edit(prog_id):
+    """
+    Registered users can edit concert programmes from this page if they
+    created the orginal programme
+    (also actionable by the Librarian admin user).
+    The drop down menu allows existing pieces to be selected for the programme.
+    """
     if request.method == "POST":
         is_finalised = True if request.form.get("is_finalised") else False
         submit = {
@@ -141,12 +168,7 @@ def prog_edit(prog_id):
             "concert_date": request.form.get("concert_date"),
             "concert_times": request.form.get("concert_times"),
             "band_name": request.form.get("band_name"),
-            "prog_item_1": request.form.get("prog_item_1"),
-            "prog_item_2": request.form.get("prog_item_2"),
-            "prog_item_3": request.form.get("prog_item_3"),
-            "prog_item_4": request.form.get("prog_item_4"),
-            "prog_item_5": request.form.get("prog_item_5"),
-            "prog_item_6": request.form.get("prog_item_6"),
+            "prog_items": request.form.getlist("music_items_selector"),
             "is_finalised": is_finalised,
             "created_by": session["user"]
         }
@@ -157,13 +179,20 @@ def prog_edit(prog_id):
     venues = mongo.db.venues.find().sort("venue_name", 1)
     bands = mongo.db.bands.find().sort("band_name", 1)
     music_items = mongo.db.music_items.find().sort("genre_name"+"title", 1)
+    genres = mongo.db.genres.find().sort("genre_name", 1)
     return render_template(
         "prog_edit.html",
-        prog=prog, venues=venues, bands=bands, music_items=music_items)
+        prog=prog, venues=venues, bands=bands, music_items=music_items,
+        genres=genres)
 
 
 @app.route("/prog_delete/<prog_id>")
 def prog_delete(prog_id):
+    """
+    Registered users can remove concert programmes if they created the
+    orginal programme (also actionable by the Librarian admin user).
+    Once deleted the user will be returned to the concert programme listing.
+    """
     mongo.db.progs.remove({"_id": ObjectId(prog_id)})
     flash("Concert Programme Successfully Deleted")
     return redirect(url_for("get_progs"))
@@ -172,12 +201,19 @@ def prog_delete(prog_id):
 # <-- Genre Management -->
 @app.route("/get_genres")
 def get_genres():
+    """
+    Librarian admin function to list existing genres for maintenance.
+    Add new genre function also available from here.
+    """
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template("genres.html", genres=genres)
 
 
 @app.route("/genre_add", methods=["GET", "POST"])
 def genre_add():
+    """
+    Librarian admin function to add a new genre.
+    """
     if request.method == "POST":
         genre = {
             "genre_name": request.form.get("genre_name")
@@ -191,6 +227,9 @@ def genre_add():
 
 @app.route("/genre_edit/<genre_id>", methods=["GET", "POST"])
 def genre_edit(genre_id):
+    """
+    Librarian admin function to edit an existing genre.
+    """
     if request.method == "POST":
         submit = {
             "genre_name": request.form.get("genre_name")
@@ -205,6 +244,9 @@ def genre_edit(genre_id):
 
 @app.route("/genre_delete/<genre_id>")
 def genre_delete(genre_id):
+    """
+    Librarian admin function to remove an existing genre.
+    """
     mongo.db.genres.remove({"_id": ObjectId(genre_id)})
     flash("Genre Successfully Deleted")
     return redirect(url_for("get_genres"))
@@ -213,12 +255,19 @@ def genre_delete(genre_id):
 # <-- Venue Management -->
 @app.route("/get_venues")
 def get_venues():
+    """
+    Librarian admin function to list existing venues for maintenance.
+    Add new venue function also available from here.
+    """
     venues = list(mongo.db.venues.find().sort("venue_name", 1))
     return render_template("venues.html", venues=venues)
 
 
 @app.route("/venue_add", methods=["GET", "POST"])
 def venue_add():
+    """
+    Librarian admin function to add a new venue.
+    """
     if request.method == "POST":
         venue = {
             "venue_name": request.form.get("venue_name")
@@ -232,6 +281,9 @@ def venue_add():
 
 @app.route("/venue_edit/<venue_id>", methods=["GET", "POST"])
 def venue_edit(venue_id):
+    """
+    Librarian admin function to edit an existing venue.
+    """
     if request.method == "POST":
         submit = {
             "venue_name": request.form.get("venue_name")
@@ -246,6 +298,9 @@ def venue_edit(venue_id):
 
 @app.route("/venue_delete/<venue_id>")
 def venue_delete(venue_id):
+    """
+    Librarian admin function to remove an existing venue.
+    """
     mongo.db.venues.remove({"_id": ObjectId(venue_id)})
     flash("Venue Successfully Deleted")
     return redirect(url_for("get_venues"))
@@ -254,12 +309,18 @@ def venue_delete(venue_id):
 # <-- Piece (Music Items) Management -->
 @app.route("/get_pieces")
 def get_pieces():
+    """
+    Function to list pieces.
+    """
     pieces = list(mongo.db.music_items.find().sort("piece_name", 1))
     return render_template("pieces.html", pieces=pieces)
 
 
 @app.route("/search_pieces", methods=["GET", "POST"])
 def search_pieces():
+    """
+    Function to search for pieces.
+    """
     query = request.form.get("query")
     pieces = list(mongo.db.music_items.find({"$text": {"$search": query}}))
     return render_template("pieces.html", pieces=pieces)
@@ -267,6 +328,9 @@ def search_pieces():
 
 @app.route("/piece_add", methods=["GET", "POST"])
 def piece_add():
+    """
+    Librarian admin function to add a new piece.
+    """
     if request.method == "POST":
         piece = {
             "genre_name": request.form.get("genre_name"),
@@ -288,6 +352,9 @@ def piece_add():
 
 @app.route("/piece_edit/<piece_id>", methods=["GET", "POST"])
 def piece_edit(piece_id):
+    """
+    Librarian admin function to edit an existing piece.
+    """
     if request.method == "POST":
         submit = {
             "genre_name": request.form.get("genre_name"),
@@ -310,6 +377,10 @@ def piece_edit(piece_id):
 
 @app.route("/piece_delete/<piece_id>")
 def piece_delete(piece_id):
+    """
+    Librarian admin function to remove an existing piece.
+    Once removed the user will be routed back the pieces summary page.
+    """
     mongo.db.music_items.remove({"_id": ObjectId(piece_id)})
     flash("Piece Successfully Deleted")
     return redirect(url_for("get_pieces"))
@@ -317,9 +388,19 @@ def piece_delete(piece_id):
 
 @app.route("/music_item/<genre_name>", methods=["GET"])
 def get_music_items(genre_name):
-    print('The genre_name is ', genre_name)
-    music_items = list(mongo.db.music_items.find({"genre_name": genre_name}))
-    print('The music_items are ', music_items)
+    """
+    Function to enable selection of genre from a list within the prog_add or
+    prog_edit functions.
+    """
+    if genre_name == "All-Genres":
+        # Grab all music items regardless of genre
+        music_items = list(mongo.db.music_items.find(
+        ).sort([
+            ("genre_name", 1), ("title", 1)]))
+    else:
+        # Grab music items just for a particular genre
+        music_items = list(mongo.db.music_items.find(
+            {"genre_name": genre_name}))
 
     data = {'music_items': json.loads(json_util.dumps(music_items))}
     return jsonify(data), 200
@@ -328,57 +409,57 @@ def get_music_items(genre_name):
 # <-- HTTP error pages -->
 # https://flask.palletsprojects.com/en/2.0.x/errorhandling/
 @app.errorhandler(400)
-def server_error(e):
+def server_error(error):
     """
     Renders a custom 400 error page with a link
     to take the user back to progs.html
     """
-    return render_template('400.html'), 400
+    return render_template('400.html', error=error), 400
 
 
 @app.errorhandler(401)
-def bad_request(e):
+def bad_request(error):
     """
     Renders a custom 401 error page with a link
     to take the user back to progs.html
     """
-    return render_template('401.html'), 401
+    return render_template('401.html', error=error), 401
 
 
 @app.errorhandler(403)
-def forbidden(e):
+def forbidden(error):
     """
     Renders a custom 403 error page with a link
     to take the user back to progs.html
     """
-    return render_template('403.html'), 403
+    return render_template('403.html', error=error), 403
 
 
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found(error):
     """
     Renders a custom 404 error page with a link
     to take the user back to progs.html
     """
-    return render_template('404.html'), 404
+    return render_template('404.html', error=error), 404
 
 
 @app.errorhandler(405)
-def method_not_allowed(e):
+def method_not_allowed(error):
     """
     Renders a custom 405 error page with a link
     to take the user back to progs.html
     """
-    return render_template('405.html'), 405
+    return render_template('405.html', error=error), 405
 
 
 @app.errorhandler(500)
-def internal_server_error(e):
+def internal_server_error(error):
     """
     Renders a custom 500 error page with a link
     to take the user back to progs.html
     """
-    return render_template('500.html'), 500
+    return render_template('500.html', error=error), 500
 
 
 if __name__ == "__main__":

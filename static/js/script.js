@@ -17,14 +17,16 @@ $(document).ready(function () {
     });
 
 
-    $('#music_title').on('change', function(){
-        console.log(this.value);
+    $('#genre').on('change', function(){
         url = '/music_item/' + this.value;
+        $("#music_items_selector option").each(function() {
+            $(this).remove();
+        });
         $.get( url, function( data ) {
             arrayData = data['music_items'];
-            console.log(arrayData[0]);
             for (var i = 0; i < arrayData.length; i++) {
-                $('#music_items_selector').append('<option value="' + arrayData[i]._id['$oid'] + '">' + arrayData[i].title + '</option>');
+                $('#music_items_selector').append(
+                    '<option value="' + arrayData[i].title + '">' + arrayData[i].genre_name + ' : ' + arrayData[i].title + '</option>');
             }
             $('#music_items_selector').formSelect();
         

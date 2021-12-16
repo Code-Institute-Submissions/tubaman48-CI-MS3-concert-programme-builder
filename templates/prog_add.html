@@ -54,70 +54,36 @@
                     <a class="tooltipped" data-position="left" 
                         data-tooltip="Minimum of 1 piece per programme<br>
                             Typically require up to 6 pieces per 45 minutes<br>
-                            Highlight-Copy-Paste selection from Choose Music dropdown<br>
+                            Genre selection from Choose Music dropdown<br>
                             into one of the 6 entries available below">
                         <i class="far fa-question-circle prefix blue-text text-darken-4"></i>
                     </a>
                 </div>
 				<div class="input-field col s12">
                     <i class="fas fa-search prefix blue-text text-darken-4"></i>
-					<select id="title" name="title" class="validate" required>
-                        <option value="" disabled selected>Choose Music</option>
-                        {% for music_item in music_items %}
-                            <option value="{{ music_item.genre_name }} {{ music_item.title }}">
-                                {{ music_item.genre_name }}:{{ music_item.title }}
+					<select id="genre" name="title" class="validate" required>
+                        <option value="" disabled>Choose Music</option>
+                        <option value="All-Genres" selected>All Genres</option>
+                        {% for genre in genres %}
+                            <option value="{{ genre.genre_name }}">
+                                {{ genre.genre_name }}
                             </option>
                         {% endfor %}
                     </select>
-					<label for="music_item.title">Music Items</label>
+					<label for="genre.genre_name">Genres</label>
 				</div>
 			</div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-music prefix amber-text text-darken-4"></i>
-                    <input id="prog_item_1" name="prog_item_1" minlength="3"
-                        type="text" class="validate" required>
-                    <label for="prog_item_1">Music Item 1</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
-                    <input id="prog_item_2" name="prog_item_2" 
-                        type="text" class="validate">
-                    <label for="prog_item_2">Music Item 2</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
-                    <input id="prog_item_3" name="prog_item_3" 
-                        type="text" class="validate">
-                    <label for="prog_item_3">Music Item 3</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
-                    <input id="prog_item_4" name="prog_item_4" 
-                        type="text" class="validate">
-                    <label for="prog_item_4">Music Item 4</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
-                    <input id="prog_item_5" name="prog_item_5"
-                        type="text" class="validate">
-                    <label for="prog_item_5">Music Item 5</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-music prefix amber-text text-darken-4"></i>
-                    <input id="prog_item_6" name="prog_item_6" 
-                        type="text" class="validate">
-                    <label for="prog_item_6">Music Item 6</label>
+                    <select id="music_items_selector" class="validate" name="music_items_selector" multiple required>
+                        {%for music_item in music_items%}
+                            <option value="{{music_item.genre_name}}:{{music_item.title}}" selected>
+                                {{music_item.genre_name}}:{{music_item.title}}
+                            </option>
+                        {%endfor%}
+                    </select>
+                    <label for="music_item.title">Music Items</label>
                 </div>
             </div>
             <!-- is finalised toggle -->

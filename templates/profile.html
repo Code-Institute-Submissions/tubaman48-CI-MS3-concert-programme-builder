@@ -39,29 +39,16 @@
             <div class="col s12 m4 center-align">  
                 
                 <div class="card">
-                    <div class="card-content">
-                        <span class="card-title grey-text text-darken-4">{{ prog.concert_venue }} </span>
-                        <span class="card-title grey-text text-darken-3"> <i class="material-icons dp48">schedule</i> {{ prog.concert_date }} </span>
+                    <div class="card-content white-text amber">
+                        <span class="card-title text-darken-4">{{ prog.concert_venue }} </span>
+                        <span class="card-title text-darken-3"> <i class="material-icons dp48">schedule</i> {{ prog.concert_date }} </span>
                     </div>
                     <div class="card-content grey lighten-4">
                         <p><strong>Playing between : {{ prog.concert_times }}</strong></p>
                         <p><strong>Band performing : {{ prog.band_name }}</strong></p>
-                        <p><strong>Music Piece 1   : {{ prog.prog_item_1 }}</strong></p>
-                        {% if prog.prog_item_2 != "" %}
-                            <p><strong>Music Piece 2   : {{ prog.prog_item_2 }}</strong></p>
-                        {% endif %}
-                        {% if prog.prog_item_3 != "" %}
-                            <p><strong>Music Piece 3   : {{ prog.prog_item_3 }}</strong></p>
-                        {% endif %}
-                        {% if prog.prog_item_4 != "" %}
-                            <p><strong>Music Piece 4   : {{ prog.prog_item_4 }}</strong></p>
-                        {% endif %}
-                        {% if prog.prog_item_5 != "" %}
-                            <p><strong>Music Piece 5   : {{ prog.prog_item_5 }}</strong></p>
-                        {% endif %}
-                        {% if prog.prog_item_6 != "" %}
-                            <p><strong>Music Piece 6   : {{ prog.prog_item_6 }}</strong></p>
-                        {% endif %}
+                        {%for music_item in prog.prog_items%}
+                            <p><strong>Music Piece {{loop.index}}   : {{ music_item }}</strong></p>
+                        {%endfor%}
                         <p><em>Created by: {{ prog.created_by }}</em></p>
                     </div>
                     {% if session.user|lower == prog.created_by|lower %}
