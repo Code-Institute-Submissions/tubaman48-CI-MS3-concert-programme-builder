@@ -36,19 +36,29 @@
     </div>
     <div class="row">
         {% for prog in progs %}
-            <div class="col s12 m4 center-align">  
+            <div class="col s12 l6 xl4 center-align">  
                 
-                <div class="card">
+                <div class="card large">
                     <div class="card-content white-text amber">
                         <span class="card-title text-darken-4">{{ prog.concert_venue }} </span>
-                        <span class="card-title text-darken-3"> <i class="material-icons dp48">schedule</i> {{ prog.concert_date }} </span>
                     </div>
                     <div class="card-content grey lighten-4">
+                        {% if prog.is_finalised %}
+                            <i class="fas fa-check-double green-text text-lighten-2 tooltipped"
+                                data-position="right" data-tooltip="Final Version"></i>
+                        {% else %}
+                            <i class="fas fa-check amber-text text-lighten-2 tooltipped"
+                                data-position="right" data-tooltip="Draft Version"></i>
+                        {% endif %}
+                        <p> <i class="material-icons dp48">schedule</i> {{ prog.concert_date }} </p>
                         <p><strong>Playing between : {{ prog.concert_times }}</strong></p>
                         <p><strong>Band performing : {{ prog.band_name }}</strong></p>
+                        <br>
+                        <p><strong>Music to be played from:</strong></p>
                         {%for music_item in prog.prog_items%}
-                            <p><strong>Music Piece {{loop.index}}   : {{ music_item }}</strong></p>
+                            <p><strong>{{loop.index}}. {{ music_item }}</strong></p>
                         {%endfor%}
+                        <br>
                         <p><em>Created by: {{ prog.created_by }}</em></p>
                     </div>
                     {% if session.user|lower == prog.created_by|lower %}
