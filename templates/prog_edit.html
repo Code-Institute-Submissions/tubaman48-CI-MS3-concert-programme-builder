@@ -85,7 +85,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-music prefix amber-text text-darken-4"></i>
-                    <select id="music_items_selector" class="validate" name="music_items_selector" multiple required>
+                    <select id="music_items_selector" class="validate" name="music_items_selector" multiple>
                         {%for music_item in prog.prog_items%}
                             <option value="{{music_item}}" selected> {{music_item}}</option>
                         {%endfor%}
@@ -110,6 +110,11 @@
 					</div>
 				</div>
 			</div>
+            <div class="row">
+                <i class="small material-icons amber-text">add_alert</i>
+                Gentle reminder !<br>
+                Be sure to include some music items in your final programme.
+            </div>
             <!-- submit button -->
             <div class="row">
                 <div class="col s12 center-align">
