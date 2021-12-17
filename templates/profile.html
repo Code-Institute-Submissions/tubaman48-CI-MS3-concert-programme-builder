@@ -12,24 +12,34 @@
                 </h4>
                 {% if session.user|lower == "librarian"|lower %}
                     <p><strong>Programmes :</strong><br>
-                        Add allowed. Edit and Remove permitted only on own entries</p>
+                        Add allowed. Edit and Remove permitted only on own entries<br>
+                        (as listed below)
+                    </p>
                     <p><strong>Music      :</strong><br>
-                        Display, Add, Edit and Remove permitted on all entries</p>
+                        Display, Add, Edit and Remove permitted on all entries
+                    </p>
                     <p><strong>Genres     :</strong><br>
-                        Display, Add, Edit and Remove permitted on all entries</p>
+                        Display, Add, Edit and Remove permitted on all entries
+                    </p>
                     <p><strong>Venues     :</strong><br>
-                        Display, Add, Edit and Remove permitted on all entries</p>
+                        Display, Add, Edit and Remove permitted on all entries
+                    </p>
                 {% else %}
                     <p><strong>Programmes :</strong><br>
-                        Add allowed. Edit and Remove permitted only on own entries</p>
+                        Add allowed. Edit and Remove permitted only on own entries<br>
+                        (as listed below)
+                    </p>
                     <p><strong>Music      :</strong><br>
                         No access to Add, Edit or Remove entries<br>
-                        (maintained by Librarian)</p>
+                        (maintained by Librarian)
+                    </p>
                     <p><strong>Genres     :</strong><br>
                         No access to Add, Edit or Remove entries<br>
-                        (maintained by Librarian)</p>
+                        (maintained by Librarian)
+                    </p>
                     <p><strong>Venues     :</strong><br>
-                        Display, Add, Edit and Remove permitted on all entries</p>
+                        Display, Add, Edit and Remove permitted on all entries
+                    </p>
                 {% endif %}
             </div>
         </div>
@@ -69,10 +79,12 @@
                         <p><em>Created by: {{ prog.created_by }}</em></p>
                     </div>
                     {% if session.user|lower == prog.created_by|lower %}
+                    <!-- Only make the Edit and Remove functions available if user created prog -->
                         <div class="card-action">
-                            <a href="{{ url_for('prog_delete', prog_id=prog._id) }}" class="btn-small red accent-4">Delete</a>
-                            <a href="{{ url_for('prog_edit', prog_id=prog._id) }}" 
-                            class="btn-small light-blue lighten-1">Edit</a>
+                            <a href="{{ url_for('prog_edit', prog_id=prog._id) }}"
+                                class="btn-small light-blue lighten-1">Edit</a>
+                            <a href="{{ url_for('prog_delete', prog_id=prog._id) }}"
+                                class="btn-small red accent-4">Remove</a>
                         </div>
                     {% endif %}
                 </div>

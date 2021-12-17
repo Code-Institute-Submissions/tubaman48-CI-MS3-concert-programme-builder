@@ -16,10 +16,10 @@
         <li>
             <div class="row white-text amber darken-4 text-shadow">
                 <div class="col s4 m3">
-                    <a href="{{ url_for('venue_delete', venue_id=venue._id) }}"
-                        class="btn-small red accent-4">Remove</a>
                     <a href="{{ url_for('venue_edit', venue_id=venue._id) }}" 
                         class="btn-small light-blue lighten-1">Edit</a>
+                    <a href="{{ url_for('venue_delete', venue_id=venue._id) }}"
+                        class="btn-small red accent-4">Remove</a>
                 </div>
                 <div class="col s8 m9 venue-format">
                     {{ venue.venue_name }}

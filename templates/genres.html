@@ -11,20 +11,22 @@
         </div>
     </div>
 
-    <div class="row">
+    <ul>
         {% for genre in genres %}
-            <div class="col s12 m3">
-                <div class="card amber darken-4 text-shadow center-align">
-                    <div class="card-content white-text">
-                        <span class="card-title">{{ genre.genre_name }}</span>
-                    </div>
-                    <div class="card-action">
-                        <a href="{{ url_for('genre_edit', genre_id=genre._id) }}" class="btn light-blue accent-4">Edit</a>
-                        <a href="{{ url_for('genre_delete', genre_id=genre._id) }}" class="btn red lighten-1">Remove</a>
-                    </div>
+        <li>
+            <div class="row white-text amber darken-4 text-shadow">
+                <div class="col s6 l4">
+                    <a href="{{ url_for('genre_edit', genre_id=genre._id) }}" 
+                        class="btn-small light-blue lighten-1">Edit</a>
+                    <a href="{{ url_for('genre_delete', genre_id=genre._id) }}"
+                        class="btn-small red accent-4">Remove</a>
+                </div>
+                <div class="col s6 l8 genre-format">
+                    {{ genre.genre_name }}
                 </div>
             </div>
+        </li>
         {% endfor %}
-    </div>
+    </ul>
 
 {% endblock %}

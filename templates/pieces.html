@@ -39,10 +39,11 @@
                 </div>
                 <div class="col s2">
                     {% if session.user|lower == "librarian" %}
-                        <a href="{{ url_for('piece_delete', piece_id=piece._id) }}"
-                            class="btn-small red accent-4">Remove</a>
+                    <!-- Only make the Edit and Remove functions available to the librarian -->
                         <a href="{{ url_for('piece_edit', piece_id=piece._id) }}" 
                             class="btn-small light-blue lighten-1">Edit</a>
+                        <a href="{{ url_for('piece_delete', piece_id=piece._id) }}"
+                            class="btn-small red accent-4">Remove</a>
                     {% endif %}
                 </div>
                 <div class="col s9">

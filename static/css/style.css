@@ -23,7 +23,8 @@
     line-height: 42px;
 }
 
-/****************************** venues.html extra formatting      */
+/*********** extra formatting for genres.html and venues.html     */
+.genre-format,
 .venue-format {
     margin-top: 5px;
     font-size: 1.5rem;
