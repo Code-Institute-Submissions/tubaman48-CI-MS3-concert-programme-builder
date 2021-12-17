@@ -324,7 +324,9 @@ def search_pieces():
     Function to search for pieces.
     """
     query = request.form.get("query")
-    pieces = list(mongo.db.music_items.find({"$text": {"$search": query}}))
+    pieces = list(mongo.db.music_items.find(
+        {"$text": {"$search": query}}).sort(
+        [("genre_name", 1), ("title", 1)]))
     return render_template("pieces.html", pieces=pieces)
 
 
