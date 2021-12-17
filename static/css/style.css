@@ -5,6 +5,18 @@
 * Browsers: last 4 version
 */
 
+@import url('https://fonts.googleapis.com/css?family=Lato|Oswald');
+
+body{
+    font-family: Lato;
+    font-weight: 500;
+}
+
+section, main,
+button, input, optgroup, select, textarea {
+    font-family: Oswald;
+}
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
