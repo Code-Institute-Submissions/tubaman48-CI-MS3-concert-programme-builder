@@ -26,7 +26,7 @@ $(document).ready(function () {
             arrayData = data['music_items'];
             for (var i = 0; i < arrayData.length; i++) {
                 $('#music_items_selector').append(
-                    '<option value="' + arrayData[i].title + '">' + arrayData[i].genre_name + ' : ' + arrayData[i].title + '</option>');
+                    '<option value="' + arrayData[i].genre_name + ' : ' + arrayData[i].title + '">' + arrayData[i].genre_name + ' : ' + arrayData[i].title + '</option>');
             }
             $('#music_items_selector').formSelect();
         

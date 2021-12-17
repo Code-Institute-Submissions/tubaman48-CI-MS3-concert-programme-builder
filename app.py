@@ -140,6 +140,7 @@ def prog_add():
             "is_finalised": is_finalised,
             "created_by": session["user"]
         }
+        print(prog.prog_items)
         mongo.db.progs.insert_one(prog)
         flash("Concert Programme Successfully Added")
         return redirect(url_for("get_progs"))
@@ -174,6 +175,7 @@ def prog_edit(prog_id):
         }
         mongo.db.progs.update({"_id": ObjectId(prog_id)}, submit)
         flash("Concert Programme Successfully Updated")
+        return redirect(url_for("get_progs"))
 
     prog = mongo.db.progs.find_one({"_id": ObjectId(prog_id)})
     venues = mongo.db.venues.find().sort("venue_name", 1)
