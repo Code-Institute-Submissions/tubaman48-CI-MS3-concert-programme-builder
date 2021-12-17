@@ -19,9 +19,6 @@ $(document).ready(function () {
 
     $('#genre').on('change', function(){
         url = '/music_item/' + this.value;
-        $("#music_items_selector option").each(function() {
-            $(this).remove();
-        });
         $.get( url, function( data ) {
             arrayData = data['music_items'];
             for (var i = 0; i < arrayData.length; i++) {
