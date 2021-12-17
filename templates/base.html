@@ -19,7 +19,7 @@
 </head>
 <body>
     <header>
-        <!== top navbar -->
+        <!-- top navbar -->
         <nav class="nav-extended text-shadow light-amber darken-1">
             <div class="nav-wrapper">
                 <a href="{{ url_for('get_progs') }}" class="brand-logo">Concert Programme Builder</a>
@@ -43,7 +43,7 @@
             </div>
         </nav>
         
-        <!== mobile sidenav -->
+        <!-- mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align light-amber-text text-darken-4">Concert Programme Builder</h4></li>
             {% if session.user %}
@@ -80,6 +80,28 @@
         {% block content %}
         {% endblock %}
     </main>
+
+    <footer class="page-footer text-shadow">
+        <div class="footer-container">
+            <div class="row footer-row">
+                <div class="col-12">
+                    <h1 class="copyright margin-auto">Copyright &copy; Richard Lovett <span id="copyright"></span></h1>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    {% block post_load_js %}
+        <script>
+            /* This script keeps the copyright year current in the footer */
+            function copyrightYear() {
+                var d = new Date();
+                var y = d.getFullYear();
+                document.getElementById("copyright").innerHTML = y;
+            }
+            copyrightYear();
+        </script>
+    {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -103,6 +103,31 @@ h4 {
     color: orangered;
 }
 
+/********************************************************* Footer */
+
+.page-footer {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: 50px 0 0 0;
+    color: whitesmoke;
+    background-color: #ee6e73;
+}
+
+.page-footer h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.footer-container {
+    text-align: center;
+}
+
+.footer-row {
+    margin: 0;
+}
+
 /************************************************** Media queries */
 /* Small to Medium devices (newer mobile phones, up to 768px) */
 @media only screen and (max-width:768px) {
