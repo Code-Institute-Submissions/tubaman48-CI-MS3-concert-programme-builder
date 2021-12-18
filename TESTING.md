@@ -32,14 +32,14 @@ The warning and errors largely related to css elements under https://github.gith
 
 ## JavaScript
 
-Skipped [JS Validation](https://jshint.com/) as my js file https://github.com/tubaman48/CI-MS3-concert-programme-builder/blob/main/static/js/script.js just contained standard jQuery functions (identical to those used in the Task Manager Mini Project within the CI LMS).
+Skipped [JS Validation](https://jshint.com/) as my js file https://github.com/tubaman48/CI-MS3-concert-programme-builder/blob/main/static/js/script.js just contained standard jQuery functions (identical to those used in the Task Manager Mini Project within the CI LMS) plus one custom jQuery function developed to build the music_items_selector (utilised within the prog_add and prog_edit templates).
 
 ## Python
 I checked the app.py file using [PEP8 online](http://pep8online.com/)
 
-The code passed all checks.
+The code passed all checks. 
 
-> - Tested site URL on [Website Page Test] (https://www.webpagetest.org/) which rendered good results except for some security header issues - [available here](https://www.webpagetest.org/result/210911_BiDc74_312dfb8766f43fdacee85cee11939146/)
+> - Tested site URL on [Website Page Test] (https://www.webpagetest.org/) which rendered good results except for some security header issues - [available here](https://www.webpagetest.org/result/211218_AiDcYQ_211d7efc2852521e92d58ed5a750a260/)
 > - Tested site URL on [Responsinator](http://www.responsinator.com/) which returned no significant display issues across all device types in portrait and landscape modes.
 > - Checked grammar and spelling throughout document.
 > - Ran CSS through [Autoprefixer](https://autoprefixer.github.io/) and copied new CSS code back into style.css doc.
@@ -49,8 +49,10 @@ The code passed all checks.
 
 # Lighthouse Testing
 
-> - Rating as at 18:00 on 20th Sep 2021 (generated via Chrome referencing live Heroku app URL) :
+> - Rating as at 18:00 on 20th Sep 2021 - original submission (generated via Chrome referencing live Heroku app URL) :
 ![lighthouse-01](/static/images/MS3-lighthouse-rating-2021-09-20-1800.png)
+> - Rating as at 02:50 on 12th Dec 2021 - resubmission (generated via Chrome referencing live Heroku app URL) :
+![lighthouse-02](/static/images/MS3-lighthouse-rating-2021-12-18-0250.png)
 
 # Testing From User Stories
 
@@ -83,7 +85,7 @@ The code passed all checks.
 > - Tested default **Programmes, Login, Register** links in menu bar to ensure they point to each section and position correctly.
 > - Tested **Profile, Venues** links in menu bar (available/visible only to all logged on users) to ensure that it points to the section and positions correctly.
 > - Tested **Music, Genres** links in menu bar (available/visible only to Librarian user) to ensure that it points to the section and positions correctly.
-
+> - **Note** that the screenshots relate to Menu Bar tests carried out before original project submission in September 2021. No amendments have been made to the Menu Bar options since then - so original screenshots are still valid as at resubmission in December 2021.
 ## 1. User menu options (whilst logged out)
 
 ### 1.1 Logged out (Programmes Page)
@@ -140,45 +142,38 @@ The code passed all checks.
 
 ## General functional and usability tests
 > - Further testing of Responsiveness of all the pages (excluding the nnn.html pages covering common http error codes) using [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
-> - &#9989;01.- [Programmes Page] (https://search.google.com/test/mobile-friendly?id=zkKOTxnvCJGYXjJV9EIYdA)
-> - - &#9989;01-01. [Add Programme Page] (https://search.google.com/test/mobile-friendly?id=1q8UeWbBw43hWaiE8IJ9xQ)
-> - - &#10060;01-02. [Edit Programme Page] (https://search.google.com/test/mobile-friendly?id=fzYmIfGMJ4GdBoz59gbcng) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt" - however this page was accessed successfully when used on an iPhone 11.
-> - &#9989;02.- [Log In Page] (https://search.google.com/test/mobile-friendly?id=nYynSGepKX09_OGRKYna3A)
-> - &#9989;03.- [Register Page] (https://search.google.com/test/mobile-friendly?id=IKq5rh65d7QHlEZCrkjnYA)
-> - &#10060;04.- [Profile Page] (https://search.google.com/test/mobile-friendly?id=QCn6N3b3QiVe38xYo1O_uQ) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt" - however this page was accessed successfully when used on an iPhone 11.
-> - &#9989;05.- [Music Page] (https://search.google.com/test/mobile-friendly?id=R0kNPnKbOQBe7YRvMmLCWQ)
-> - - &#9989;05-01. [Add Music Page] (https://search.google.com/test/mobile-friendly?id=kwmhhcJ8yrcyXQ5seSn4MA)
-> - - &#10060;05-02. [Edit Music Page] (https://search.google.com/test/mobile-friendly?id=avLeR8Tolm5Cwo1SU0FNLg) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt" - however this page was accessed successfully when used on an iPhone 11.
-> - &#9989;06.- [Genres Page] (https://search.google.com/test/mobile-friendly?id=Ewy1psd1VfrvE9iN9dgU9w)
-> - - &#9989;06-01. [Add Genres Page] (https://search.google.com/test/mobile-friendly?id=Qn4PSHspFZmBpt_E5Z1AcQ) 
-> - - &#10060;06-02. [Edit Genres Page] (https://search.google.com/test/mobile-friendly?id=eny8DYGzsMb1D2eXYGl2rA) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt" - however this page was accessed successfully when used on an iPhone 11.
-> - &#9989;07.- [Venues Page] (https://search.google.com/test/mobile-friendly?id=fKRQNRUZlX-xBb7eCizsNw)
-> - - &#9989;07.01 [Add Venues Page] (https://search.google.com/test/mobile-friendly?id=1PywRqrXaJDNLiTpFNiNwg)
-> - - &#10060;07.02 [Edit Venues Page] (https://search.google.com/test/mobile-friendly?id=ASJe4ALw2spCk0IKh5GKRQ) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt"
-> - &#10060;08.- [HTTP 400 Error Page] (https://search.google.com/test/mobile-friendly?id=xlalJKuvLke1qTscGXWY3Q) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt"
-> - &#10060;09.- [HTTP 401 Error Page] (https://search.google.com/test/mobile-friendly?id=fkdW3Pd5Osf1_jywG5ugPA) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt"
-> - &#10060;10.- [HTTP 403 Error Page] (https://search.google.com/test/mobile-friendly?id=ysfsERxVgZwWD_I0PU_LFw) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt"
-> - &#10060;11.- [HTTP 404 Error Page] (https://search.google.com/test/mobile-friendly?id=pmbWe40NeONUiAImmR5gYw) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt"
-> - &#10060;12.- [HTTP 405 Error Page] (https://search.google.com/test/mobile-friendly?id=9ETDaD6wj1qmaFNvPiX47Q) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt"
-> - &#10060;13.- [HTTP 500 Error Page] (https://search.google.com/test/mobile-friendly?id=gy919xtILkOyq53eVoZNaQ) "Page cannot be reached
-This could be because the page is unavailable or blocked by robots.txt"
+> - &#9989;01.- [Programmes Page] (https://search.google.com/test/mobile-friendly/result?id=l7qe3CJsh6XqOPzGlkAYiQ)
+> - - &#9989;01-01. [Add Programme Page] (https://search.google.com/test/mobile-friendly/result?id=t_sK2VGJ-5jhFEqvZcgEyg)
+> - - &#10060;01-02. [Edit Programme Page] (https://search.google.com/test/mobile-friendly/result?id=LrxKOFiXMfOMPeZsuwsmZA) "URL is not available to Google" - however this page was accessed successfully when used on an iPhone 11.
+> - &#9989;02.- [Log In Page] (https://search.google.com/test/mobile-friendly/result?id=WyFlXkgtB_PGMxvMewkfAA)
+> - &#9989;03.- [Register Page] (https://search.google.com/test/mobile-friendly/result?id=iRmgwcaK1ayRUcQPO6RmtA)
+> - &#10060;04.- [Profile Page] (https://search.google.com/test/mobile-friendly/result?id=tidGXj7-hI9iuTe5-5ZF2g) "URL is not available to Google" - however this page was accessed successfully when used on an iPhone 11.
+> - &#10060;05.- [Music Page] (https://search.google.com/test/mobile-friendly/result?id=3pR75-K446eN_lkzDbrAJQ) "URL is not available to Google" - however this page was accessed successfully when used on an iPhone 11.
+> - - &#9989;05-01. [Add Music Page] (https://search.google.com/test/mobile-friendly/result?id=Wlonui79eCpPMq5XcRaOSQ)
+> - - &#10060;05-02. [Edit Music Page] (https://search.google.com/test/mobile-friendly/result?id=wGGSyOvmEjroJJvzDgM1ug) "URL is not available to Google" - however this page was accessed successfully when used on an iPhone 11.
+> - &#10060;06.- [Genres Page] (https://search.google.com/test/mobile-friendly/result?id=prBroa6HpTLE0HatACVWZg) "URL is not available to Google" - however this page was accessed successfully when used on an iPhone 11.
+> - - &#9989;06-01. [Add Genres Page] (https://search.google.com/test/mobile-friendly/result?id=LDBDaSkZ6iC1y6c4vYO4wQ) 
+> - - &#10060;06-02. [Edit Genres Page] (https://search.google.com/test/mobile-friendly/result?id=3YlOFEHEGQp6928tsHe6ow) "URL is not available to Google" - however this page was accessed successfully when used on an iPhone 11.
+> - &#10060;07.- [Venues Page] (https://search.google.com/test/mobile-friendly/result?id=FfW_-l-QamfLPhKaPrm3jA) "URL is not available to Google" - however this page was accessed successfully when used on an iPhone 11.
+> - - &#9989;07.01 [Add Venues Page] (https://search.google.com/test/mobile-friendly/result?id=p7VZL-rNMUC3zUdLVT18OQ)
+> - - &#10060;07.02 [Edit Venues Page] (https://search.google.com/test/mobile-friendly/result?id=ufYf4XkvgZYDVYIMVoK-Rg) "URL is not available to Google" - however this page was accessed successfully when used on an iPhone 11.
+> - &#10060;08.- [HTTP 400 Error Page] (https://search.google.com/test/mobile-friendly/result?id=vqXW-JdrD8Gj7vDuB0aPrQ) "URL is not available to Google"
+> - &#10060;09.- [HTTP 401 Error Page] (https://search.google.com/test/mobile-friendly/result?id=ZoWQ0XLp4lCbcCxdX-ClPA) "URL is not available to Google"
+> - &#10060;10.- [HTTP 403 Error Page] (https://search.google.com/test/mobile-friendly/result?id=AMGhbZJLrbjtkWbqAcj5uA) "URL is not available to Google"
+> - &#10060;11.- [HTTP 404 Error Page] (https://search.google.com/test/mobile-friendly/result?id=bfBNBQZ6uWo3uOklFGhDFg) "URL is not available to Google"
+> - &#10060;12.- [HTTP 405 Error Page] (https://search.google.com/test/mobile-friendly/result?id=nldV3el5SGV-Ogt9kZFpcw) "URL is not available to Google"
+> - &#10060;13.- [HTTP 500 Error Page] (https://search.google.com/test/mobile-friendly/result?id=vx3Ejf0XUy5dtOTJ4CaPWQ) "URL is not available to Google"
 
 
 # Bugs and Fixes
 ## Title text overflow issue
 > - Default font-size settings for materialise brand-logo class within nav elements was causing the title text to overflow outside of the nav bar area.
 > - Resolution was to introduce some media query overrides within the style.css file.
+## Auto-population of music items within a concert programme to be coded
+> - Clunky manual copy and paste tool tip was in place on original project submission as a tactical solution to populate a selected music item within the programme based on the music item selected via the inline query just above the 6 music item entries. Extra code built to auto-populate into revised prog_items array within prog structure (replacing the 6 fixed items in prog_item_n strings - where n = 1 to 6). There are a couple of scenarios though where the new code does not work as expected - these exceptions are documented below in Known Bugs.
 
 # Known Bugs
-## Auto-population of music items within a concert programme to be coded
-> - Clunky manual copy and paste tool tip in place as a tactical solution to populate a selected music item within the programme based on the music item selected via the inline query just above the 6 music item entries (ran out of time before project deadline to construct extra code required to auto-populate).
+## Add Concert Programme "All Genres" selection discrepancy depending on when it is selected
+> - If the "All Genres" drop down selection is the first Genre drop down selection it correctly returns a full candidate list of pieces sorted on Title within Genre, but if it follows the addition of a piece via a specifc genre subselection prior to saving the new programme entry, the full candidate list is returned unordered. Ran out of time to carry out a detailed debug to ascertain why this is happening.
+## Edit Concert Programme "All Genres" selection discrepancy if some pieces already selected
+> - If on entering the Edit Concert Programme page some pieces are already selected, then the "All Genres" drop down selection only returns those pieces already selected rather than a full list of all pieces available. Ran out of time to carry out a detailed debug to ascertain why this is happening.
