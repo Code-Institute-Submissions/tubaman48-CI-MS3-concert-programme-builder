@@ -375,6 +375,8 @@ Due to the size of the testing section, I have created a separate document for i
 > - The Download ZIP option provides a link to download a ZIP file which can be unzipped on your local machine.
 > - Alternatively, you can clone the repository using the following line in your terminal: git clone https://github.com/tubaman48/CI-MS3-concert-programme-builder
 > - Access the folder in your terminal window and install the application's required modules using the following command: pip3 install -r requirements.txt
+> - Create the Procfile required for the Heroku App by issuing the command "echo web: python app.py > Procfile". The Procfile should now contain the following line :
+web: python app.py
 
 #### MongoDB set up
 > - Sign-in or sign-up to MongoDB and create a new cluster (the information required is documented on the CI public GitHub at https://github.com/Code-Institute-Solutions/MongoDB/blob/master/01-CreateAMongoDBDatabase/01-create_a_mongodb_database/mongoSetup.md)
