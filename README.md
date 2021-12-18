@@ -110,12 +110,12 @@ The following user stories were descoped early on in the project due to time con
 
 - ## 4. Skeleton
 
-> -  Wireframes available [here](/static/docs/RLs-CI-MS3-Wireframes.pdf).
+> -  Wireframes available [here](/static/docs/RLs-CI-MS3-Wireframes.pdf). It should be noted that the display layouts actually developed have evolved since the these orginal wireframes were produced to generally improve the look and feel of the site. Key differences are the use of cards rather accordion devices for displaying the concert programmes and the ability introduced to store a variable number of music items within a programme. Revised Wireframes will be provided in the future.
 > -  A multi page website using Flask to route to the appropriate template page, dependent on the options selected made up of the following pages :
 > -  The Home page provides a textual introduction to the site.
 > -  The Music Items page (only visible to the Librarian, Musical Director(s) and registered Band Members) presents a summary list of music items available with a search facility based on the Title. Additional edit capabilities are provided only to the Librarian, Musical Director(s) for integrity purposes.
 > -  The Concert Programmes page (visible to all users) presents a summary list of concert programmes available with a search facility based on the venue and/or date. Additional edit capabilities are provided only to the Librarian, Musical Director(s) for integrity purposes. 
-> -  The Concert Programme Details page (available via the Concert Programmes page) provides the date, times, venue and content of the programme with an option to print.
+> -  The Concert Programme Details page (available via the Concert Programmes page) provides the date, times, venue and content of the programme with an option to print. (Note : the print feature was was dropped from the initial scope of this project due to time constraints)
 > -  The Login / Register page.
 > -  The User Admin page (only accessible to the User Admin) for the creation, display, search, update and delete of user profiles. (Note : this feature was dropped from the initial scope of this project due to time constraints)
 >
@@ -125,7 +125,7 @@ The following user stories were descoped early on in the project due to time con
 
 - ## 5. Surface
 
-> I've decided on the same colour scheme for the body of each separate page using appropriate icons alongside the title of the page to keep a sense of where you are on the site.
+> I've decided on the same colour scheme for the body of each separate page using just the title of the page to keep a sense of where you are on the site.
 >
 > ### Colours
 >
@@ -134,12 +134,13 @@ The following user stories were descoped early on in the project due to time con
 > 
 > ### Typography
 >
-> - "Lato" font (with fall-back font of Verdana) for main headings. This font was specifically chosen for the header page title and subtitle.
+> - "Lato" font (with fall-back font of Verdana) for main headings and the footer. This font was specifically chosen for the header page title and subtitle and the footer copyright text.
 > - "Oswald" font (with fall-back font of Sans-Serif) for body content.
 >
 > ### Images
 >
-> The image selection has been carefully chosen to depict the target audiences for this directory to make this a more welcoming resource.
+> Image usage has been avoided for the initial version of the site so as not to detract from the development of the functionality required for an MS4 project.
+> Possible future usage of images could revolve around pictures of venues to be used as appropriate background to the venue entries and the individual programmes to make this a more welcoming resource.
 
 ---
 
@@ -234,12 +235,8 @@ The following user stories were descoped early on in the project due to time con
 |concert_venue          |string         |location of concert from *venues*
 |concert_date           |date           |date of concert
 |concert_times          |time           |times of concert
-|prog_item_1            |string         |1st chosen item on programme
-|prog_item_2            |string         |2nd chosen item on programme
-|prog_item_3            |string         |3rd chosen item on programme
-|prog_item_4            |string         |4th chosen item on programme
-|prog_item_5            |string         |5th chosen item on programme
-|prog_item_6            |string         |6th chosen item on programme
+|prog_items             |array          |each array entry represents a chosen item on programme as a string
+|                       |               |which concatenates together the genre and the title from the piece.
 |created_by             |ObjectId       |object id taken from *users*
 
 ## users collection
@@ -290,7 +287,7 @@ The following user stories were descoped early on in the project due to time con
 
 > - [Heroku](https://www.heroku.com/) used to deploy live site
 > - [MongoDB](https://www.mongodb.com/) used to host database information.
-> - [RandomKeygen](https://randomkeygen.com/) used to create a strong password for required  `<SECRET_KEY>`.
+> - [RandomKeygen](https://randomkeygen.com/) used to create a strong password for required  `<MS3_SECRET_KEY>`.
 > - [Lighthouse](https://developers.google.com/web/tools/lighthouse) for performance review.
 > - [Autoprefixer](https://autoprefixer.github.io/) Parses CSS and adds vendor prefixes.
 > - [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly) Mobile-friendly check on site.
@@ -326,13 +323,16 @@ The following user stories were descoped early on in the project due to time con
 
 # Testing
 
-Due to the size of the testing section, I have created a separate document for it. You can find it [here](https://github.com/tubaman48/CI-MS3-concert-programme-builder/main/TESTING.md).
+Due to the size of the testing section, I have created a separate document for it. You can find it [here](https://github.com/tubaman48/CI-MS3-concert-programme-builder/blob/main/TESTING.md).
 
 ---
 
 # Project barriers and solutions
 
-> - to be done
+> - The key technical challenge for this particular site was to provide a clean and flexible automated method to select multiple pieces from the music_items collection.
+> - The limited time available for the original submission of this MS3 project meant that at the time I had to put in a rather clumsy manual process to cut and paste selected pieces into up to 6 fixed entries, which was not to my liking.
+> - However, for this resubmission I worked out the basis for the automated solution with strong guidance and superb technical input from my mentor Antonio Rodrigues, which I was able to take forward and mould into a tidier solution that enabled candidate lists to be generated, where the ticked selections were automatically populated into an array of entries.
+> - There are still some glitches which need further attention to fix (documented [here](https://github.com/tubaman48/CI-MS3-concert-programme-builder/blob/main/TESTING.md#known-bugs) at the bottom of the TESTING.md under Known Bugs), but I hope it can be seen that it goes a long way towards providing the user experience that I intended.
 
 ---
 
@@ -353,8 +353,6 @@ Due to the size of the testing section, I have created a separate document for i
 # Version Control
 
 > - Used Git for version control.
-> - Branches were created to work on alternative fixes to issues encountered.
-> - The branches were then merged with the master branch after any conflicts were addressed.
 
 ---
 # Deployment
@@ -368,12 +366,42 @@ Due to the size of the testing section, I have created a separate document for i
 > - Under the [settings/pages](https://github.com/tubaman48/CI-MS3-concert-programme-builder/settings/pages) section of the GitHub repository, under 'Source' drop-down, the 'Main branch' was selected.
 > - Once saved, this publishes the project to GitHub Pages and displays the site url.
 > - There is no difference between the deployed version and the development version.
+
+### **Local Deployment**
+
 > - The code can be run locally through clone or download.
-> - You can do this by opening the repository, clicking on the green 'Code' button and selecting either 'clone or download'.
+> - You can do this by opening the repository on GitHub, clicking on the green 'Code' button and selecting either 'clone or download'.
 > - The Clone option provides a url ( https://github.com/tubaman48/CI-MS3-concert-programme-builder ), which you can use on your desktop IDE.
 > - The Download ZIP option provides a link to download a ZIP file which can be unzipped on your local machine.
+> - Alternatively, you can clone the repository using the following line in your terminal: git clone https://github.com/tubaman48/CI-MS3-concert-programme-builder
+> - Access the folder in your terminal window and install the application's required modules using the following command: pip3 install -r requirements.txt
+
+#### MongoDB set up
+> - Sign-in or sign-up to MongoDB and create a new cluster (the information required is documented on the CI public GitHub at https://github.com/Code-Institute-Solutions/MongoDB/blob/master/01-CreateAMongoDBDatabase/01-create_a_mongodb_database/mongoSetup.md)
+> - Within the Sandbox, click the collections button and after click Create Database (Add My Own Data) called programme_builder
+> - Set up the following collections: bands, genres, music_items, progs, statuses, users, and venues. Refer to earlier Database section in this README to set up the exact structure for each collection. 
+> - Also, an extra second index named genre_name_text_title_text needs to be set up for collection music_items, as per following screenshot :
+![Image](/static/images/MongoDB-setup-2nd-index-for-music_items.png)
+> - Under the Security menu on the left, select Database Access.
+> - Add a new database user, and keep the credentials secure
+> - Within the Network Access option, add IP Address 0.0.0.0
+> - In your IDE, create a file containing your environmental variables called env.py at the root level of the application. It will need to contain the following lines and variables: 
+
+"""
+Local environment settings
+"""
+
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("MS3_SECRET_KEY", "YOUR_SECRET_KEY")
+os.environ.setdefault("MONGO_URI", "YOUR_MONGODB_URI")
+os.environ.setdefault("MONGO_DBNAME", "programme_builder")
+
+> - YOUR_MONGODB_URI will be the value within MongoDB found by going to clusters> connect> connect to your application and entering your passwords and dbname within the link.
 > - The project was deployed to Heroku for the live site and the pushes to GitHub automatically pushed to Heroku to update the live site. 
-> - Please note that this project will only run locally if an env.py file is set up containing the IP, PORT, SECRET_KEY, MONGO-URI and MONGO_DBNAME. 
+> - Please note that this project will only run locally if : 1) an env.py file is set up containing the IP, PORT, MS3_SECRET_KEY, MONGO-URI and MONGO_DBNAME and 2) (for GitPod users) the above 5 variables are set up with the same values under Settings>Variables within your Gitpod Workspace. 
 >   For security reasons these details will not be shared on this documentation. The env.py file should be added to your gitignore file.
 
 ### **Heroku**
@@ -399,7 +427,7 @@ Due to the size of the testing section, I have created a separate document for i
 >  
 >      * IP: 0.0.0.0
 >      * PORT: 5000
->      * SECRET_KEY: (This is a secret password that must be very secure - recommend selecting a "Fort Knox Password" at https://randomkeygen.com/)
+>      * MS3_SECRET_KEY: (This is a secret password that must be very secure - recommend selecting a "Fort Knox Password" at https://randomkeygen.com/)
 >      * MONGO_DBNAME: (enter the database name that you are connecting to - in this case *programme_builder* )
 >      * MONGO_URI: (enter your mongo uri. This is found by going to clusters> connect> connect to your application and entering your passwords and dbname within the link)
 >  
@@ -434,7 +462,11 @@ Due to the size of the testing section, I have created a separate document for i
 > - A combination of *Amy O'Shea* and *Rachel Sherlock* for their example MS3 README.md files :
 >      https://github.com/AmyOShea/MS3-Cocktail-Hour/blob/master/README.md
 >      https://github.com/Rachel2308/MS3-belles-task-manager/blob/master/README.md
->   These examples significantly helped me with formatting of the database schema / nav link accessibility table within features / deployment sections within this README.
+>   These examples significantly helped me with formatting of the database schema / nav link accessibility table within features / deployment sections within this README for the original project submission.
+> - *Marina Shalneva* for her example MS3 README.md file :
+>      https://github.com/marina601/scooter-circle/blob/master/README.md
+>   This helped me to improve my local deployment instructions for the project resubmission.
+> - My mentor *Antonio Rodrigues* - especially for his technical guidance for my resubmission (so quickly imparted over 2 or 3 interactive sessions within a few days).
 > - **CI staff** and **Slack Community** for always being on-hand with questions posted and assistance requests.
 > - Everyone that takes part in the Slack calls, specifically from the **#In-It-Together** and **#London Community** channels.
 
